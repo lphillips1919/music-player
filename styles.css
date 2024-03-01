@@ -1,139 +1,220 @@
-body {
-    background-color: lightgreen;
-
-    /* Smoothly transition the background color */
-    transition: background-color .5s;
+@font-face {
+    src: url(Assets/Fonts/ProtestStrike-Regular.ttf);
+    font-family: ProtestStrike-Regular;
 }
 
-/* Using flex with the column direction to
-align items in a vertical direction */
-.player {
-    height: 95vh;
+body{
+    margin: 0;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+}
+
+.main{
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    height: 100vh;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
 }
 
-.details {
+.main-content{
+    background-color: #121212;
+    flex: 1;
+    border-radius: 1rem;
+    overflow: auto;
+    padding: 0 1.5rem 0 1.5rem;
+    margin-bottom: 20px;
+}
+
+.sidebar{
+    width: 340px;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 10rem;
+}
+
+.nav{
+    background-color: #121212;
+    height: 100px;
+    border-radius: 1rem;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
-    margin-top: 25px;
+    padding: 0.5rem 0.75rem;
 }
 
-.track-art {
-    margin: 25px;
-    height: 250px;
-    width: 250px;
+.nav-option {
+    line-height: 2.5rem;
+    opacity: 0.6;
+    padding: 0.5rem 0.75rem;
+}
+
+.nav-option:hover {
+    opacity: 1;
+}
+
+.nav-option i {
+    font-size: 1.25rem;
+}
+
+.nav-option a {
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+#library-link a:visited,
+#home-link a:visited,
+#search-link a:visited {
+    color: white;
+}
+
+#library-link a,
+#home-link a,
+#search-link a {
+    color: white;
+}
+
+
+.library {
+    background-color: #121212;
+    border-radius: 1rem;
+    height: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lib-option img{
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.icons {
+    font-size: 1.25rem;
+    display: flex;
+}
+
+.icons i{
+    opacity: 0.7;
+    margin-right:1rem;
+}
+
+.icons i:hover{
+    opacity: 1;
+}
+
+.box{
+    background-color: #232323;
+    height: 8rem;
+    border-radius: 0.75rem;
+    margin: 0.75rem 0 1.75rem 0;
+    padding: 0.75rem 1rem;
+}
+
+.box-p1 {
+    font-size: 1rem;
+    font-weight: 550;
+}
+
+.box-p2 {
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.badge {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    padding: 0.25rem 1rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: fit-content;
+}
+
+.dark-badge {
+    background-color: #000;
+    color: #fff;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    z-index: 10;
+}
+
+.sticky-nav-icons img{
+    margin-left: 0.75rem;
+    
+}
+
+.sticky-nav-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item{
+    margin-right: 1rem;
+}
+
+@media (max-width:1000px){
+    .hide {
+        display: none;
+    }
+}
+
+.card {
+    background-color: #232323;
+    width: 150px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.card-title{
+    font-weight: 600;
+}
+
+.card-info {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.footer{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img {
+    margin: 0;
+    height: 150px;
+    width: 150px;
     background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
     background-size: cover;
     background-position: center;
-    border-radius: 15%;
-}
-
-/* Changing the font sizes to suitable ones */
-.now-playing {
-    font-size: 1rem;
-}
-
-.track-name {
-    font-size: 3rem;
-}
-
-.track-artist {
-    font-size: 1.5rem;
-}
-
-/* Using flex with the row direction to
-align items in a horizontal direction */
-.buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.playpause-track,
-.prev-track,
-.next-track {
-    padding: 25px;
-    opacity: 0.8;
-
-    /* Smoothly transition the opacity */
-    transition: opacity .2s;
-}
-
-/* Change the opacity when mouse is hovered */
-.playpause-track:hover,
-.prev-track:hover,
-.next-track:hover {
-    opacity: 1.0;
-}
-
-/* Define the slider width so that it scales properly */
-.slider_container {
-    width: 75%;
-    max-width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Modify the appearance of the slider */
-.seek_slider, .volume_slider {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 5px;
-    background: black;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-
-/* Modify the appearance of the slider thumb */
-.seek_slider::-webkit-slider-thumb,
-.volume_slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background: white;
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-/* Change the opacity when mouse is hovered */
-.seek_slider:hover,
-.volume_slider:hover {
-    opacity: 1.0;
-}
-
-.seek_slider {
-    width: 60%;
-}
-
-.volume_slider {
-    width: 30%;
-}
-
-.current-time,
-.total-duration {
-    padding: 10px;
-}
-
-i.fa-volume-down,
-i.fa-volume-up {
-    padding: 10px;
-}
-
-/* Change the mouse cursor to a pointer
-when hovered over */
-i.fa-play-circle,
-i.fa-pause-circle,
-i.fa-step-forward,
-i.fa-step-backward {
-    cursor: pointer;
+    border-radius: 10%;
 }
