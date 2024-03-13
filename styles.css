@@ -27,6 +27,16 @@ body{
     margin-bottom: 20px;
 }
 
+.music-player{
+    background-color: black;
+    border-radius: 10px;
+    position: relative;
+    top: 175px;
+    width: 100%;
+    height: 75px;
+    overflow: hidden;
+}
+
 .sidebar{
     width: 340px;
     border-radius: 1rem;
@@ -64,14 +74,25 @@ body{
 
 #library-link a:visited,
 #home-link a:visited,
-#search-link a:visited {
+#search-link a:visited,
+#login-link a:visited {
     color: white;
 }
 
 #library-link a,
 #home-link a,
-#search-link a {
+#search-link a,
+#login-link a {
     color: white;
+}
+
+
+#signUp-link a {
+    color: black;
+}
+
+#signUp-link a:visited {
+    color: black;
 }
 
 
@@ -228,12 +249,12 @@ body{
 
 .music-player {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .album {
-    width: 25%;
+    width: 10;
 }
 
 .main-player {
@@ -260,57 +281,72 @@ body{
     opacity: 1;
 }
 
-.playback-bar {
+.slider_container {
     display: flex;
+    margin-right: 12px;
+    width: 500px;
     justify-content: center;
     align-items: center;
 }
 
-.progress-bar {
-    width: 70%;
+.seek_slider, .volume_slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
-    background-color: transparent;
+    height: 5px;
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+/* Modify the appearance of the slider thumb */
+.seek_slider::-webkit-slider-thumb,
+.volume_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: rgb(54, 54, 54);
     cursor: pointer;
-}
-
-.progress-bar::-webkit-slider-runnable-track {
-    background-color: #ddd;
-    height: 0.2rem;
-    border-radius: 100px;
-
-}
-
-.progress-bar::-webkit-slider-thumb {
-    appearance: none;
-    background-color: #1bd760;
-    height: 1rem;
-    width: 1rem;
     border-radius: 50%;
-    margin-top: -6px;
 }
 
-.progress-bar::-webkit-slider-runnable-track:hover {
-    background-color: #1bd760;
+/* Change the opacity when mouse is hovered */
+.seek_slider:hover,
+.volume_slider:hover {
+    opacity: 1.0;
 }
+
+.seek_slider {
+    width: 60%;
+}
+
+.volume_slider {
+    width: 30%;
+}
+
 
 .album {
     display: flex;
     align-items: center;
-     
-    padding-left:0.5rem ;
-    
+    padding-left: 0.5rem ;
     justify-content: flex-start;
 }
 
 .album-img{
-    height: 4rem;
-    width: 4rem;
+    height: 1rem;
+    width: 1rem;
     border-radius: 5px;
 }
 
-.song-info {
-    margin: 0.4rem 0 0.4rem 0.4;
-    padding: 0.5rem 0 0.5rem 0.5rem;
+.details {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .song-name {
@@ -350,4 +386,67 @@ body{
 
 .control-icon:hover {
     opacity: 1;
+}
+
+.current-time,
+.total-duration {
+    padding: 0px;
+}
+
+i.fa-volume-down,
+i.fa-volume-up {
+    padding: 0px;
+}
+
+i.fa-play-circle,
+i.fa-pause-circle,
+i.fa-step-forward,
+i.fa-step-backward {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* Changing the font sizes to suitable ones */
+.now-playing {
+    font-size: 1rem;
+}
+
+.track-art {
+    margin-right: 10px;
+    height: 65px;
+    width: 65px;
+    background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
+    background-size: cover;
+    background-position: center;
+    border-radius: 15%;
+}
+
+.track-name {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.track-artist {
+    font-size: 1rem;
+}
+
+.playpause-track,
+.prev-track,
+.next-track {
+    align-items: right;
+    opacity: 0.8;
+
+    /* Smoothly transition the opacity */
+    transition: opacity .2s;
+}
+
+/* Change the opacity when mouse is hovered */
+.playpause-track:hover,
+.prev-track:hover,
+.next-track:hover {
+    opacity: 1.0;
 }
