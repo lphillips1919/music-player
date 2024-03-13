@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="Assets/ComplexGradient/color.css">
 
     <!-- FONT AWESOME ICONS -->
+    <!-- Load FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- SCRIPTS -->
@@ -39,7 +41,7 @@
                 <div class="options">
                     <div class="lib-option nav-option" id="library-link">
                     <img src="./Assets/Photos/library_icon.png" alt="lib">
-                    <a href="PlayMusic/music.html">Your Library</a>
+                    <a href="#">Your Library</a>
                     </div>
                     <div class="icons">
                         <i class="fa-solid fa-plus"></i>
@@ -96,38 +98,45 @@
                 <div class="footer">
                     <div class="line"></div>
                 </div>
-                <!-- This is for the Music Player at the bottom of the Page -->
                 <div class="music-player">
                     <div class="album">
-                        <img src="" class="card-img">
-                        <div class="song-info">
-                            <p class="song-name">song name</p>
-                            <p class="artist-name">artist name</p>
-                        </div>
+                        <div class="track-art"></div> 
+                        <div class="details">
+                            <div class="now-playing"></div>
+                            <div class="track-name">Track Name</div>
+                            <div class="track-artist">Track Artist</div>
+                        </div>  
                         <div class="album-icons">
-                            <i class="fa-regular fa-heart"></i>  
-                            <i class="fa-solid fa-display"></i>
+                        <i class="fa-regular fa-heart"></i>  
+                        <i class="fa-solid fa-display"></i>
                         </div>
                     </div>
-                    <div class="main-player">
+                    <div class="player">
                         <div class="player-controls">
-                            <img src="./Assets/Photos/player_icon1.png" class="player-control-icon">
-                            <img src="./Assets/Photos/player_icon2.png" class="player-control-icon">
-                            <img src="./Assets/Photos/player_icon3.png" class="player-control-icon" style="opacity: 1; height: 2rem;">
-                            <img src="./Assets/Photos/player_icon4.png" class="player-control-icon" >
-                            <img src="./Assets/Photos/player_icon5.png" class="player-control-icon">
+                            <div class="prev-track" onclick="prevTrack()">
+                                <i class="fa fa-step-backward fa-2x"></i>
+                            </div>
+                            <div class="playpause-track" onclick="playpauseTrack()">
+                                <i class="fa fa-play-circle fa-2x"></i>
+                            </div>
+                            <div class="next-track" onclick="nextTrack()">
+                                <i class="fa fa-step-forward fa-2x"></i>
+                            </div>
                         </div>
-                        <div class="playback-bar">
-                            <span class="curr-time">00:00</span>
-                            <input type="range" min="0" max="100" step="1" class="progress-bar">
-                            <span class="tot-time">3:33</span>
+                        <div class="slider_container">
+                            <div class="current-time">00:00</div>
+                            <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+                            <div class="total-duration">00:00</div>
                         </div>
-                        <div class="controls ">
-                            <i class="fa-regular fa-circle-play control-icon" ></i>
-                            <i class="fa-solid fa-bars control-icon" ></i>
-                            <i class="fa-solid fa-computer control-icon" ></i>
-                            <i class="fa-solid fa-volume-high control-icon" ></i>
-                            <input class="progress-bar control-range control-icon" type="range" >
+                    </div>
+                    <div class="controls ">
+                        <i class="fa-regular fa-circle-play control-icon" ></i>
+                        <i class="fa-solid fa-bars control-icon" ></i>
+                        <i class="fa-solid fa-computer control-icon" ></i>
+                        <div class="slider_container">
+                            <i class="fa-solid fa-volume-low control-icon"></i>
+                                <input type="range" min="1" max="100" value="100" class="volume_slider" onchange="setVolume()">
+                            <i class="fa-solid fa-volume-high control-icon"></i>
                         </div>
                     </div>
                 </div>
