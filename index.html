@@ -20,6 +20,8 @@
     <!-- SCRIPTS -->
     <script src="Assets/ComplexGradient/color.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="playlist.js" defer></script>
+    <script src="library.js" defer></script>
 
 </head>
 <body id="complex-gradient-transition">
@@ -49,10 +51,17 @@
                     </div>
                 </div>
                     <div class="lib-boxes">
-                        <div class="box">
+                        <div class="box" id="NoPlaylist">
                             <p class="box-p1">Create your first playlist</p>
                             <p class="box-p2">It's easy we'll help you</p>
-                            <button class="badge">Create playlist</button>
+                            <button class="badge" id="createPlaylist">Create playlist</button>
+                        </div>
+                        <div class="box" id="Playlists" hidden>
+                            <div id="topPlaylist">
+                                <p class="box-p1" id="playlistName">playlistArray[0].name</p>
+                                <p class="box-p2" id="songTitle">playlistArray[0].songs[0].title</p>
+                                <button class="badge" id="addSong">Add</button>
+                            </div>
                         </div>
                         <div class="box">
                             <p class="box-p1">Find your Favorite podcasts</p>
