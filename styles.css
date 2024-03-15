@@ -18,28 +18,6 @@ body{
     color: white;
 }
 
-.main-content{
-    background-color: #121212;
-    flex: 1;
-    border-radius: 1rem;
-    overflow: auto;
-    padding: 0 1.5rem 0 1.5rem;
-    margin-bottom: 20px;
-}
-
-.music-player{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: black;
-    border-radius: 10px;
-    position: sticky;
-    margin-top: 30%;
-    margin-bottom: 2%;
-    bottom: 0;
-    width: auto;
-}
-
 .sidebar{
     width: 340px;
     border-radius: 1rem;
@@ -74,30 +52,6 @@ body{
     font-size: 1rem;
     margin-left: 1rem;
 }
-
-#library-link a:visited,
-#home-link a:visited,
-#search-link a:visited,
-#login-link a:visited {
-    color: white;
-}
-
-#library-link a,
-#home-link a,
-#search-link a,
-#login-link a {
-    color: white;
-}
-
-
-#signUp-link a {
-    color: black;
-}
-
-#signUp-link a:visited {
-    color: black;
-}
-
 
 .library {
     background-color: #121212;
@@ -161,6 +115,15 @@ body{
     width: fit-content;
 }
 
+.main-content{
+    background-color: #121212;
+    flex: 1;
+    border-radius: 1rem;
+    overflow: auto;
+    padding: 0 1.5rem 0 1.5rem;
+    margin-bottom: 20px;
+}
+
 .dark-badge {
     background-color: #000;
     color: #fff;
@@ -192,6 +155,28 @@ body{
     margin-right: 1rem;
 }
 
+#library-link a:visited,
+#home-link a:visited,
+#search-link a:visited,
+#login-link a:visited {
+    color: white;
+}
+
+#library-link a,
+#home-link a,
+#search-link a,
+#login-link a {
+    color: white;
+}
+
+#signUp-link a {
+    color: black;
+}
+
+#signUp-link a:visited {
+    color: black;
+}
+
 @media (max-width:1000px){
     .hide {
         display: none;
@@ -218,44 +203,54 @@ body{
 }
 
 .card-title{
+    font-size: .9rem;
     font-weight: 600;
+    overflow: hidden;
 }
 
 .card-info {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     opacity: 0.7;
 }
 
 .footer{
-    margin: 10px;
+    height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* This is differnt than the track-art styles since they are currently loaded differently */
 .card-img {
     margin: 0;
     height: 150px;
     width: 150px;
+    /* This is the default background if the album image is not fetched from the Javascript code */
     background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
     background-size: cover;
     background-position: center;
-    border-radius: 10%;
+    border-radius: 10px;
 }
 
 .line {
     width: 90%;
-    height: 50%;
+    height: 80%;
     border-top: 1px solid white;
     opacity: 0.4;
 }
 
-.album {
-    width: 10;
-}
-
-.main-player {
-    width: 50%;
+.music-player{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    position: sticky;
+    top: 10px;
+    bottom: 20px;
+    width: auto;
+    height: auto;
+    overflow: clip;
 }
 
 .controls {
@@ -280,7 +275,8 @@ body{
 
 .slider_container {
     display: flex;
-    width: auto;
+    margin-right: 12px;
+    width: 500px;
     justify-content: center;
     align-items: center;
 }
@@ -324,38 +320,20 @@ body{
     width: 30%;
 }
 
-
 .album {
     display: flex;
     align-items: center;
-    padding-left: 0.5rem ;
-    justify-content: flex-start;
-}
-
-.album-img{
-    height: 1rem;
-    width: 1rem;
-    border-radius: 5px;
-}
-
-.details {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     justify-content: center;
 }
 
-.song-name {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.artist-name {
-    font-size: 0.8rem;
-    font-weight: 400;
+.details {
+    margin-left: 10px;
+    align-items:flex-end;
+    flex-direction: column;
 }
 
 .album-icons i {
+    position: relative;
     padding: 1rem;
     font-size: 1.2rem;
 }
@@ -363,11 +341,15 @@ body{
 .controls{
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .controls i{
     margin-left: 1rem;
+}
+
+.slider_container i{
+    margin-left: 0rem;
 }
 
 .progress-bar {
@@ -397,7 +379,10 @@ i.fa-volume-up {
 i.fa-play-circle,
 i.fa-pause-circle,
 i.fa-step-forward,
-i.fa-step-backward {
+i.fa-step-backward,
+i.fa-random,
+i.fa-sync,
+i.fa-repeat {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -416,23 +401,26 @@ i.fa-step-backward {
     width: 65px;
     background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
     background-size: cover;
-    background-position: center;
-    border-radius: 15%;
+    background-position: center center;
+    border-radius: 8%;
 }
 
 .track-name {
     font-size: 1rem;
     margin-bottom: 10px;
-    overflow: hidden;
 }
 
 .track-artist {
     font-size: 1rem;
+    margin-bottom: 0px;
+    overflow: hidden;
 }
 
 .playpause-track,
 .prev-track,
-.next-track {
+.next-track,
+.shuffle-track,
+.loop-track {
     align-items: right;
     opacity: 0.8;
 
@@ -443,6 +431,8 @@ i.fa-step-backward {
 /* Change the opacity when mouse is hovered */
 .playpause-track:hover,
 .prev-track:hover,
-.next-track:hover {
+.next-track:hover,
+.shuffle-track:hover,
+.loop-track:hover {
     opacity: 1.0;
 }
