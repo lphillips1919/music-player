@@ -6,6 +6,8 @@ let track_artist = document.querySelector(".track-artist");
 let playpause_btn = document.querySelector(".playpause-track");
 let next_btn = document.querySelector(".next-track");
 let prev_btn = document.querySelector(".prev-track");
+let shuffleBtn = document.querySelector(".shuffle-track");
+let loopBtn = document.querySelector(".loop-track");
  
 let seek_slider = document.querySelector(".seek_slider");
 let volume_slider = document.querySelector(".volume_slider");
@@ -15,6 +17,7 @@ let total_duration = document.querySelector(".total-duration");
 // Specify globally used values
 let track_index = 0;
 let isPlaying = false;
+let isLooping = false;
 let updateTimer;
 
 let curr_track = document.createElement('audio');
@@ -39,9 +42,41 @@ let track_list = [
         image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
         path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
     },
+    {
+        name: "Against all odds",
+        artist: "Nick Petrov",
+        image: "https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
+        path: "/Assets/Audio/againstallodds.mp3"
+    },
+    {
+        name: "Follow the River",
+        artist: "Ethereal 88",
+        image: "https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
+        path: "/Assets/Audio/ethereal88-follow-the-river.mp3"
+    },
+    {
+        name: "Last Potatoe on Fire",
+        artist: "Lobo Loco",
+        image: "https://freemusicarchive.org/image/?file=album_image%2F3EIbW78YhfW3Oq0byETPzQfx6M9suAWIQnSZ0Zzl.jpg&width=290&height=290&type=album",
+        path: "Assets/Audio/Lobo Loco - Last Potatoe on Fire (ID 2088).mp3"
+    },
+    {
+        name: "Cover Girl",
+        artist: "Beat Mekanik",
+        image: "https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
+        path: "Assets/Audio/Beat Mekanik - Cover Girl.mp3"
+    },
+    {
+        name: "1st Contact",
+        artist: "Der Weg",
+        image: "https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
+        path: "Assets/Audio/1st Contact - Der Weg.mp3"
+    },
 ];
 
 function loadTrack(track_index) {
+    /* This function is very confusing as I found it on GeeksForGeeks. It appears to load a track when the URL to the webpage is opened and has no call in the HTML file however if its not broken don't fix it. */
+
     // Clear the previous seek timer
     clearInterval(updateTimer);
     resetValues();
@@ -156,6 +191,47 @@ function seekUpdate() {
         curr_time.textContent = currentMinutes + ":" + currentSeconds;
         total_duration.textContent = durationMinutes + ":" + durationSeconds;
     }
+}
+
+// Fisher-Yates shuffle algorithm to shuffle tracks
+function shuffleTracks() {
+    for (let i = track_list.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = track_list[i];
+        track_list[i] = track_list[j];
+        track_list[j] = temp;
+    }
+    // If I didnt add the or statement then it wont be shuffled unless actively being played
+    if (isPlaying || !isPlaying) {
+        loadTrack(track_index);
+        playTrack();
+    }
+}
+
+
+function switchLoop() {
+    // Switch between Looping and UnLooping
+    // depending on the current state
+    if (!isLooping) loopTrack();
+    else unLoopTrack();
+}
+
+function loopTrack() {
+    // Loop the loaded track
+    curr_track.loop = true;
+    isLooping = true;
+
+    // Replace icon with the looping icon
+    loopBtn.innerHTML = '<i class="fa fa-sync fa-2x"></i>';
+}
+
+function unLoopTrack() {
+    // unLoop the loaded track
+    curr_track.loop = false;
+    isLooping = false;
+
+    // Replace icon with the unLoop icon
+    loopBtn.innerHTML = '<i class="fa fa-repeat fa-2x"></i>';
 }
 
 document.addEventListener("DOMContentLoaded", function () {
