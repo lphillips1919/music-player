@@ -10,16 +10,18 @@
 
     <!-- STYLE SHEETS -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="Assets/ComplexGradient/color.css">
+    <link rel="stylesheet" href="Assets/styles/color.css">
 
     <!-- FONT AWESOME ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- SCRIPTS -->
-    <script src="Assets/ComplexGradient/color.js" defer></script>
+    <script src="Assets/scripts/library.js" defer></script>
+    <script src="Assets/scripts/playlist.js" defer></script>
+    <script src="Assets/scripts/color.js" defer></script>
     <script src="script.js" defer></script>
-
+    
 </head>
 <body id="complex-gradient-transition">
     <!-- HOME AND SEARCH SECTIONS (LEFT SIDE OF WEBPAGE) -->
@@ -49,10 +51,17 @@
                     </div>
                 </div>
                     <div class="lib-boxes">
-                        <div class="box">
+                        <div class="box" id="NoPlaylist">
                             <p class="box-p1">Create your first playlist</p>
                             <p class="box-p2">It's easy we'll help you</p>
-                            <button class="badge">Create playlist</button>
+                            <button class="badge" id="createPlaylist">Create playlist</button>
+                        </div>
+                        <div class="box" id="Playlists" hidden>
+                            <div id="topPlaylist">
+                                <p class="box-p1" id="playlistName">playlistArray[0].name</p>
+                                <p class="box-p2" id="songTitle">playlistArray[0].songs[0].title</p>
+                                <button class="badge" id="addSong">Add</button>
+                            </div>
                         </div>
                         <div class="box">
                             <p class="box-p1">Find your Favorite podcasts</p>
