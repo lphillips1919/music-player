@@ -88,7 +88,7 @@ body{
 
 .box{
     background-color: #232323;
-    height: 8rem;
+    height: 20rem;
     border-radius: 0.75rem;
     margin: 0.75rem 0 1.75rem 0;
     padding: 0.75rem 1rem;
@@ -103,6 +103,27 @@ body{
     font-size: 0.85rem;
     opacity: 0.75;
 }
+
+#topPlaylist, 
+#middlePlaylist, 
+#bottomPlaylist {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: right; /* Center horizontally */
+    margin-top: 10px;
+    height: 10%;
+    width: 100%;
+    background-color: black;
+    border-radius: 8px;
+}
+
+#topPlaylist i, 
+#middlePlaylist i, 
+#bottomPlaylist i {
+   margin: 10px; /* Adjust as needed */
+}
+
+
 
 .badge {
     background-color: #ffffff;
