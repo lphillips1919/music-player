@@ -1,55 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Music Player On Github</title>
-<!-- Load FontAwesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat Boulevard</title>
 
-<!-- Load the custom CSS style file -->
-<link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- ICONS -->
+    <link rel="icon" href="./Assets/Photos/musicfavicon.png" />
+
+    <!-- STYLE SHEETS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Assets/styles/color.css">
+
+    <!-- FONT AWESOME ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- SCRIPTS -->
+    <script src="Assets/scripts/library.js" defer></script>
+    <script src="Assets/scripts/playlist.js" defer></script>
+    <script src="Assets/scripts/color.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
-<body>
-<div class="player">
-
-	<!-- Define the section for displaying details -->
-	<div class="details">
-	<div class="now-playing">PLAYING x OF y</div>
-	<div class="track-art"></div>
-	<div class="track-name">Track Name</div>
-	<div class="track-artist">Track Artist</div>
-	</div>
-
-	<!-- Define the section for displaying track buttons -->
-	<div class="buttons">
-	<div class="prev-track" onclick="prevTrack()">
-		<i class="fa fa-step-backward fa-2x"></i>
-	</div>
-	<div class="playpause-track" onclick="playpauseTrack()">
-		<i class="fa fa-play-circle fa-5x"></i>
-	</div>
-	<div class="next-track" onclick="nextTrack()">
-		<i class="fa fa-step-forward fa-2x"></i>
-	</div>
-	</div>
-
-	<!-- Define the section for displaying the seek slider-->
-	<div class="slider_container">
-	<div class="current-time">00:00</div>
-	<input type="range" min="1" max="100"
-		value="0" class="seek_slider" onchange="seekTo()">
-	<div class="total-duration">00:00</div>
-	</div>
-
-	<!-- Define the section for displaying the volume slider-->
-	<div class="slider_container">
-	<i class="fa fa-volume-down"></i>
-	<input type="range" min="1" max="100"
-		value="99" class="volume_slider" onchange="setVolume()">
-	<i class="fa fa-volume-up"></i>
-	</div>
-</div>
-
-<!-- Load the main script for the player -->
-<script src="script.js"defer></script>
+<body id="complex-gradient-transition">
+    <!-- HOME AND SEARCH SECTIONS (LEFT SIDE OF WEBPAGE) -->
+    <div class="main">
+        <div class="sidebar">
+            <div class="nav">
+                <div class="nav-option" id="home-link" style="opacity: 1;">
+                    <!-- anywhere you see fa- is used for font awesome icons -->
+                    <i class="fa-solid fa-house"></i>
+                    <a href="#">Home</a>
+                </div>
+                <div class="nav-option" id="search-link">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="#">Search</a>
+                </div>
+            </div>
+    <!-- LIBRARY SECTION -->
+            <div class="library">
+                <div class="options">
+                    <div class="lib-option nav-option" id="library-link">
+                    <img src="./Assets/Photos/library_icon.png" alt="lib">
+                    <a href="#">Your Library</a>
+                    </div>
+                    <div class="icons">
+                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+                    <div class="lib-boxes">
+                        <div class="box" id="NoPlaylist">
+                            <p class="box-p1">Create your first playlist</p>
+                            <p class="box-p2">It's easy we'll help you</p>
+                            <button class="badge" id="createPlaylist">Create playlist</button>
+                        </div>
+                        <div class="box" id="Playlists" hidden>
+                            <div id="topPlaylist">
+                                <p class="box-p1" id="playlistName">playlistArray[0].name</p>
+                                <p class="box-p2" id="songTitle">playlistArray[0].songs[0].title</p>
+                                <button class="badge" id="addSong">Add</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <p class="box-p1">Find your Favorite podcasts</p>
+                            <p class="box-p2">Discover new episodes</p>
+                            <button class="badge">Discover Podcasts</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- MAIN CONTENT SECTION (RIGHT SIDE OF WEBPAGE) -->        
+        <div class="main-content">
+            <div class="sticky-nav">
+                <div class="sticky-nav-icons">
+                    <img src="./Assets/Photos/backward_icon.png" alt="">
+                    <img src="./Assets/Photos/forward_icon.png" alt="" class="hide">
+                </div>
+                <div class="sticky-nav-options">
+                    <button class="badge nav-item hide" id="signUp-link"><a href="./Login/index.html">Sign Up</a></button>
+                    <button class="badge nav-item dark-badge" id="login-link"><i class="fa-regular fa-circle-down" style="margin-right: 5px;"></i><a href="./Login/index.html">Login</a></button>
+                </div>
+            </div>
+                <h2>Recently Played</h2>
+                <div class="card-container">
+                    <!-- each of these cards are their own item sadly, I am working to get these fixed -->
+                    <div class="card" id="playCard1">
+                        <img src="" class="card-img">
+                        <p class="card-title" id="songTitle"></p>
+                        <p class="card-info" id="songInfo"></p>
+                        <button class="badge play-button" id="playButton">Play</button>
+                    </div>
+                    <div class="card" id="playCard2">
+                        <img src="" class="card-img">
+                        <p class="card-title" id="songTitle"></p>
+                        <p class="card-info" id="songInfo"></p>
+                        <button class="badge play-button" id="playButton">Play</button>
+                    </div>
+                    <div class="card" id="playCard3">
+                        <img src="" class="card-img">
+                        <p class="card-title" id="songTitle"></p>
+                        <p class="card-info" id="songInfo"></p>
+                        <button class="badge play-button" id="playButton">Play</button>
+                    </div>
+                    <div class="card" id="playCard4">
+                        <img src="" class="card-img">
+                        <p class="card-title" id="songTitle"></p>
+                        <p class="card-info" id="songInfo"></p>
+                        <button class="badge play-button" id="playButton">Play</button>
+                    </div>
+                    <div class="card" id="playCard5">
+                        <img src="" class="card-img">
+                        <p class="card-title" id="songTitle"></p>
+                        <p class="card-info" id="songInfo"></p>
+                        <button class="badge play-button" id="playButton">Play</button>
+                    </div>
+                    <div class="card" id="playCard6">
+                        <img src="" class="card-img">
+                        <p class="card-title" id="songTitle"></p>
+                        <p class="card-info" id="songInfo"></p>
+                        <button class="badge play-button" id="playButton">Play</button>
+                    </div>
+                    <div class="card" id="playCard7">
+                        <img src="" class="card-img">
+                        <p class="card-title" id="songTitle"></p>
+                        <p class="card-info" id="songInfo"></p>
+                        <button class="badge play-button" id="playButton">Play</button>
+                    </div>
+                    <div class="card" id="playCard8">
+                        <img src="" class="card-img">
+                        <p class="card-title" id="songTitle"></p>
+                        <p class="card-info" id="songInfo"></p>
+                        <button class="badge play-button" id="playButton">Play</button>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="line"></div>
+                </div>
+                <div class="music-player">
+                    <!-- this part of the code is very important and needs to be left in -->
+                    <!-- This is how the Javascript changes the inner HTML item by the class name -->
+                    <div class="track-art"></div> 
+                    <div class="details">
+                        <div class="now-playing"></div>
+                        <div class="track-name">Track Name</div>
+                        <div class="track-artist">Track Artist</div>
+                    </div>
+                    <!-- These buttons are useless at the moment-->  
+                    <div class="album-icons">
+                        <i class="fa-regular fa-heart"></i>  
+                        <i class="fa-solid fa-display"></i>
+                    </div>
+                    <div class="player">
+                        <div class="player-controls">
+                            <!-- !This section is  very important the code will not work without these -->
+                            <div class="shuffle-track" onclick="shuffleTracks()">
+                                <i class="fa fa-random fa-2x"></i>
+                            </div>
+                            <div class="prev-track" onclick="prevTrack()">
+                                <i class="fa fa-step-backward fa-2x"></i>
+                            </div>
+                            <div class="playpause-track" onclick="playpauseTrack()">
+                                <i class="fa fa-play-circle fa-2x"></i>
+                            </div>
+                            <div class="next-track" onclick="nextTrack()">
+                                <i class="fa fa-step-forward fa-2x"></i>
+                            </div>
+                            <div class="loop-track" onclick="switchLoop()">
+                                <i class="fa fa-repeat fa-2x"></i>
+                            </div>
+                        </div>
+                        <div class="slider_container">
+                            <!-- !This section is very important the code will not work without these -->
+                            <div class="current-time">00:00</div>
+                            <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+                            <div class="total-duration">00:00</div>
+                        </div>
+                    </div>
+                    <div class="controls ">
+                        <i class="fa-regular fa-circle-play control-icon" ></i>
+                        <i class="fa-solid fa-bars control-icon" ></i>
+                        <i class="fa-solid fa-computer control-icon" ></i>
+                        <div class="slider_container">
+                            <!-- !This section is very important the code will not work without these -->
+                            <i class="fa-solid fa-volume-low control-icon"></i>
+                                <input type="range" min="1" max="100" value="100" class="volume_slider" onchange="setVolume()">
+                            <i class="fa-solid fa-volume-high control-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-</html>
+</html

@@ -1,13 +1,13 @@
-// Select all the elements in the HTML page
-// and assign them to a variable
 let now_playing = document.querySelector(".now-playing");
 let track_art = document.querySelector(".track-art");
 let track_name = document.querySelector(".track-name");
 let track_artist = document.querySelector(".track-artist");
- 
+
 let playpause_btn = document.querySelector(".playpause-track");
 let next_btn = document.querySelector(".next-track");
 let prev_btn = document.querySelector(".prev-track");
+let shuffleBtn = document.querySelector(".shuffle-track");
+let loopBtn = document.querySelector(".loop-track");
  
 let seek_slider = document.querySelector(".seek_slider");
 let volume_slider = document.querySelector(".volume_slider");
@@ -17,11 +17,11 @@ let total_duration = document.querySelector(".total-duration");
 // Specify globally used values
 let track_index = 0;
 let isPlaying = false;
+let isLooping = false;
 let updateTimer;
- 
-// Create the audio element for the player
+
 let curr_track = document.createElement('audio');
- 
+
 // Define the tracks that have to be played
 let track_list = [
     {
@@ -42,10 +42,41 @@ let track_list = [
         image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
         path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
     },
+    {
+        name: "Against all odds",
+        artist: "Nick Petrov",
+        image: "https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
+        path: "/Assets/Audio/againstallodds.mp3"
+    },
+    {
+        name: "Follow the River",
+        artist: "Ethereal 88",
+        image: "https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
+        path: "/Assets/Audio/ethereal88-follow-the-river.mp3"
+    },
+    {
+        name: "Last Potatoe on Fire",
+        artist: "Lobo Loco",
+        image: "https://freemusicarchive.org/image/?file=album_image%2F3EIbW78YhfW3Oq0byETPzQfx6M9suAWIQnSZ0Zzl.jpg&width=290&height=290&type=album",
+        path: "Assets/Audio/Lobo Loco - Last Potatoe on Fire (ID 2088).mp3"
+    },
+    {
+        name: "Cover Girl",
+        artist: "Beat Mekanik",
+        image: "https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
+        path: "Assets/Audio/Beat Mekanik - Cover Girl.mp3"
+    },
+    {
+        name: "1st Contact",
+        artist: "Der Weg",
+        image: "https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
+        path: "Assets/Audio/1st Contact - Der Weg.mp3"
+    },
 ];
-  
 
 function loadTrack(track_index) {
+    /* This function is very confusing as I found it on GeeksForGeeks. It appears to load a track when the URL to the webpage is opened and has no call in the HTML file however if its not broken don't fix it. */
+
     // Clear the previous seek timer
     clearInterval(updateTimer);
     resetValues();
@@ -59,8 +90,6 @@ function loadTrack(track_index) {
         "url(" + track_list[track_index].image + ")";
     track_name.textContent = track_list[track_index].name;
     track_artist.textContent = track_list[track_index].artist;
-    now_playing.textContent = 
-        "PLAYING " + (track_index + 1) + " OF " + track_list.length;
     
     // Set an interval of 1000 milliseconds
     // for updating the seek slider
@@ -69,23 +98,6 @@ function loadTrack(track_index) {
     // Move to the next track if the current finishes playing
     // using the 'ended' event
     curr_track.addEventListener("ended", nextTrack);
-    
-    // Apply a random background color
-    random_bg_color();
-}
-    
-function random_bg_color() {
-    // Get a random number between 64 to 256
-    // (for getting lighter colors)
-    let red = Math.floor(Math.random() * 256) + 64;
-    let green = Math.floor(Math.random() * 256) + 64;
-    let blue = Math.floor(Math.random() * 256) + 64;
-    
-    // Construct a color with the given values
-    let bgColor = "rgb(" + red + ", " + green + ", " + blue + ")";
-    
-    // Set the background to the new color
-    document.body.style.background = bgColor;
 }
 
 // Function to reset all values to their default
@@ -108,7 +120,7 @@ function playTrack() {
     isPlaying = true;
 
     // Replace icon with the pause icon
-    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-2x"></i>';
 }
 
 function pauseTrack() {
@@ -117,7 +129,7 @@ function pauseTrack() {
     isPlaying = false;
 
     // Replace icon with the play icon
-    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-2x"></i>';
 }
 
 function nextTrack() {
@@ -180,6 +192,70 @@ function seekUpdate() {
         total_duration.textContent = durationMinutes + ":" + durationSeconds;
     }
 }
-    
+
+// Fisher-Yates shuffle algorithm to shuffle tracks
+function shuffleTracks() {
+    for (let i = track_list.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = track_list[i];
+        track_list[i] = track_list[j];
+        track_list[j] = temp;
+    }
+    // If I didnt add the or statement then it wont be shuffled unless actively being played
+    if (isPlaying || !isPlaying) {
+        loadTrack(track_index);
+        playTrack();
+    }
+}
+
+
+function switchLoop() {
+    // Switch between Looping and UnLooping
+    // depending on the current state
+    if (!isLooping) loopTrack();
+    else unLoopTrack();
+}
+
+function loopTrack() {
+    // Loop the loaded track
+    curr_track.loop = true;
+    isLooping = true;
+
+    // Replace icon with the looping icon
+    loopBtn.innerHTML = '<i class="fa fa-sync fa-2x"></i>';
+}
+
+function unLoopTrack() {
+    // unLoop the loaded track
+    curr_track.loop = false;
+    isLooping = false;
+
+    // Replace icon with the unLoop icon
+    loopBtn.innerHTML = '<i class="fa fa-repeat fa-2x"></i>';
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Select all the cards and their elements
+    let cards = document.querySelectorAll(".card");
+
+    // Loop through each card
+    cards.forEach((card, index) => {
+        // Set the initial track details for each card
+        let currentTrack = track_list[index];
+        updateCard(card, currentTrack);
+    });
+
+    // Function to update the card content
+    function updateCard(card, track) {
+        let cardImg = card.querySelector(".card-img");
+        let songTitle = card.querySelector(".card-title");
+        let songInfo = card.querySelector(".card-info");
+
+        cardImg.src = track.image;
+        songTitle.textContent = track.name;
+        songInfo.textContent = `Artist: ${track.artist}`;
+    }
+});
+
 // Load the first track in the tracklist
 loadTrack(track_index);
