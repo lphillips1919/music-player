@@ -1,9 +1,5 @@
-@font-face {
-    src: url(Assets/Fonts/ProtestStrike-Regular.ttf);
-    font-family: ProtestStrike-Regular;
-}
-
 body{
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: black;
     color: white;
@@ -88,7 +84,7 @@ body{
 
 .box{
     background-color: #232323;
-    height: 20rem;
+    height: 16rem;
     border-radius: 0.75rem;
     margin: 0.75rem 0 1.75rem 0;
     padding: 0.75rem 1rem;
@@ -104,26 +100,68 @@ body{
     opacity: 0.75;
 }
 
-#topPlaylist, 
-#middlePlaylist, 
-#bottomPlaylist {
+
+.dropbar {
+    width: auto;
+    color: #ffffff;
     display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: right; /* Center horizontally */
-    margin-top: 10px;
-    height: 10%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.list li {
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+}
+
+.list-title {
+    display: flex;
+    gap: 0.5rem;
+    align-items: left;
     width: 100%;
-    background-color: black;
-    border-radius: 8px;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
 }
 
-#topPlaylist i, 
-#middlePlaylist i, 
-#bottomPlaylist i {
-   margin: 10px; /* Adjust as needed */
+.list-title .fa-chevron-down {
+    display: flex;
+    margin-left: auto;
+    font-size: 0.75rem;
 }
 
+.list-title:hover,
+.list-title.active,
+.list.inner li:hover {
+  background: #5a5a5a;
+}
 
+.list.inner {
+    height: 0;
+    overflow: hidden;
+    transition: height 200ms ease;
+}
+
+.list.inner li {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    padding-left: 2rem;
+}
+
+.list-title.active .fa-chevron-down {
+    transform: rotate(180deg);
+}
 
 .badge {
     background-color: #ffffff;
@@ -457,3 +495,4 @@ i.fa-repeat {
 .loop-track:hover {
     opacity: 1.0;
 }
+
