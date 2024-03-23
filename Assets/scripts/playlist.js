@@ -1,7 +1,6 @@
 const createPlaylistButton = document.getElementById("createPlaylist");
 const AddSongButton = document.getElementById("addSong");
-
-const defaultSongOne = new Song("Night Owl", "Broke For Free", "https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250", "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3")
+const playlistPageLink = document.getElementsByClassName('dynamicLink')
 
 class Song {
 
@@ -20,8 +19,9 @@ class Song {
 
 class Playlist {
 
-    constructor(name) {
+    constructor(name, thumbnail) {
         this.name = name;
+        this.thumbnail = thumbnail;
     }
 
     ChangeName(newName) {
@@ -40,18 +40,21 @@ class Playlist {
 
     }
 
-    GetSongs(i) {
+    GetSong(i) {
         return songs[i];
     }
 
-    name = ""
+    name = "";
     songs = [];
+    thumbnail = "";
 }
 
 let playlistArray = [];
 
 function CreatePlaylist(name) {
     playlistArray.push(new Playlist(name));
+
+    localStorage.setItem("Playlists", playlistArray)
 
 }
 
@@ -61,9 +64,44 @@ function DeletePlaylist(name) {
 
 }
 
-function AddSongTPlaylist(song) {
-    playlistArray[0].AddSong(song);
+function AddSongToPlaylist(index, song) {
+    playlistArray[index].AddSong(song);
 }
 
-createPlaylistButton.addEventListener("click", CreatePlaylist("Default Playlist"));
-AddSongButton.addEventListener("click", AddSongTPlaylist(defaultSongOne));
+function UpdateLinks() {
+    for (var i = 0; i < playlistPageLink.length; i++) {
+        let temp = './PlaylistInfoPage/playlistInfo.html?index=' + i +"&name=" + playlistArray[i].name;
+
+        playlistPageLink[i].href = temp;
+
+    }
+    /*playlistPageLink.forEach(element => {
+        element.href = './temp.html';
+        console.log(playlistPageLink.href)
+        console.log("in loop")
+
+    });*/
+
+    //playlistPageLink.href = './temp.html';
+
+}
+
+
+function ContentLoad() {
+    CreatePlaylist("Playlist One");
+    for (var i = 0; i <5; i++) {
+        AddSongToPlaylist(0, defaultSongOne);
+    }
+    UpdateLinks();
+
+}
+
+const defaultSongOne = new Song("Night Owl", "Broke For Free", "https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250", "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3")
+
+createPlaylistButton.addEventListener("click", function () {CreatePlaylist("Default Playlist")}, false);
+
+AddSongButton.addEventListener("click", function () {AddSongToPlaylist(0,defaultSongOne)}, false);
+
+document.addEventListener("DOMContentLoaded", function () {ContentLoad()}, false);
+
+
