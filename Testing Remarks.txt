@@ -1,0 +1,11 @@
+GREEN
+Song progress bar movement is not smooth
+Song back button goes immediately to previous song rather than just restarting (maybe I'm just weird)
+Volume control updates only when releasing the mouse button
+No control for the amount of text put into the login pages, should probably cap at 255 or something
+
+YELLOW
+Song progress bar moves as the user is trying to move it
+I swear that the song progress bar is 1 second behind
+
+RED
