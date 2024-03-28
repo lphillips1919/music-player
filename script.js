@@ -288,6 +288,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+
+const handleClick = (event) => {
+    const listTitle = event.target;
+    const innerList = listTitle.nextElementSibling;
+    const content = innerList.querySelector(".content");
+  
+    // listTitle.classList.toggle("active");
+    if (listTitle.classList.contains("active")) {
+      listTitle.classList.remove("active");
+      innerList.style.height = 0;
+    } else {
+      listTitle.classList.add("active");
+      innerList.style.height = `${content.clientHeight}px`;
+    }
+};
+  
+const listTitles = document.querySelectorAll(".list-title");
+
+for (let listTitle of listTitles) {
+    listTitle.addEventListener("click", handleClick);
+}
+  
+
 // Load the first track in the tracklist
 //loadTrack(track_index);
 //console.log(queue_list.length);
