@@ -244,10 +244,10 @@ ul {
 
 .card {
     background-color: #232323;
-    width: auto;
-    border-radius: 8px;
+    width: 150px;
+    border-radius: 0.5rem;
     padding: 1rem;
-    margin-left: 1.2rem;
+    margin-left: 1.5rem;
     margin-top: 1rem;
 }
 
@@ -257,7 +257,7 @@ ul {
 }
 
 .card-img {
-    width: auto;
+    width: 100%;
     border-radius: 0.5rem;
 }
 
@@ -298,7 +298,7 @@ ul {
     opacity: 0.4;
 }
 
-.music-player {
+.music-player{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -455,7 +455,7 @@ i.fa-repeat {
 }
 
 .track-art {
-    margin-left: 15px;
+    margin-right: 10px;
     height: 65px;
     width: 65px;
     background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
