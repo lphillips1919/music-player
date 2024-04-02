@@ -15,7 +15,7 @@ let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
  
 // Specify globally used values
-let track_index = 0;
+//let track_index = 0;
 let isPlaying = false;
 let isLooping = false;
 let updateTimer;
@@ -24,7 +24,13 @@ let curr_track = document.createElement('audio');
 
 // Some variables that Trevor was playing around with. We will hopefully be able to implement this better at a later date. I don't know Javascript!
 let queue_index = 0;
+/*
+let atHomepage = true;
 
+function switchPage() {
+    atHomepage = ! atHomepage;
+}
+*/  
 function addToQueue(addedID) {
     // Adds a song to the queue when the + button is clicked. If the queue is currently empty, starts playing the music.
     if (queue_list.length == 0) {
@@ -86,12 +92,6 @@ let track_list = [
         image: "https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
         path: "Assets/Audio/1st Contact - Der Weg.mp3"
     },
-    {
-        name: "Cover Gurl",
-        artist: "Dvr Wvg",
-        image: "https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-        path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3"
-    },
 ];
 
 let queue_list = [];
@@ -101,7 +101,7 @@ function loadTrack(song_id) {
     // Trevor here, I have hijacked this function to now operate on the queue instead of the hardcoded track_list
 
     // Clear the previous seek timer
-    clearInterval(updateTimer);
+    clearInterval(song_id);
     resetValues();
     
     // Load a new track
@@ -137,7 +137,7 @@ function playpauseTrack() {
     else pauseTrack();
 }
 
-function playTrack() {
+function playTrack() {// If the queue is empty
     // Play the loaded track
     curr_track.play();
     isPlaying = true;
@@ -268,12 +268,31 @@ function unLoopTrack() {
 document.addEventListener("DOMContentLoaded", function () {
     // Select all the cards and their elements
     let cards = document.querySelectorAll(".card");
+    let container = document.querySelector(".card-container")
+    console.log(container);
+    let songID = 0;
 
     // Loop through each card
-    cards.forEach((card, index) => {
+    /*cards.forEach((card, index) => {
         // Set the initial track details for each card
         let currentTrack = track_list[index];
         updateCard(card, currentTrack);
+        console.log(card.name);
+
+    });*/
+
+    track_list.forEach(song => {
+        const songCard = `                    
+        <div class="card" id="playCard1">
+            <img src="${song.image}" class="card-img">
+            <p class="card-title" id="songTitle">${song.name}</p>
+            <p class="card-info" id="songInfo">Artist: ${song.artist}</p>
+            <button class="badge play-button" id="playButton">Play</button>
+            <button class="badge queue-button" id="queueButton" onclick="addToQueue(${songID})">+</button>
+        </div>`
+        //console.log(songID)
+        songID += 1;
+        container.innerHTML += songCard;
     });
 
     // Function to update the card content
@@ -288,29 +307,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
-const handleClick = (event) => {
-    const listTitle = event.target;
-    const innerList = listTitle.nextElementSibling;
-    const content = innerList.querySelector(".content");
-  
-    // listTitle.classList.toggle("active");
-    if (listTitle.classList.contains("active")) {
-      listTitle.classList.remove("active");
-      innerList.style.height = 0;
-    } else {
-      listTitle.classList.add("active");
-      innerList.style.height = `${content.clientHeight}px`;
-    }
-};
-  
-const listTitles = document.querySelectorAll(".list-title");
-
-for (let listTitle of listTitles) {
-    listTitle.addEventListener("click", handleClick);
-}
-  
-
 // Load the first track in the tracklist
 //loadTrack(track_index);
-//console.log(queue_list.length);
