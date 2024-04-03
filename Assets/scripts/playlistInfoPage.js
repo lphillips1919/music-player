@@ -1,3 +1,108 @@
+const indexValue = new URLSearchParams(window.location.search)
+//const currentPlaylist = localStorage.getItem("Playlists")[indexValue]
+
+const currentPlaylist = {
+    name: "Default Playlist", 
+    songs:[
+        //{name:"Cover Girl",// mp3 file wont load?
+        //author:"Jimmy",
+        //path:"home",// What is path?
+        //thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
+        //id: 6,
+        //spot: 0},
+        {name:"Shipping Lanes",
+        author:"Jimmy",
+        path:"home",
+        thumbnail:"https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
+        id: 2,
+        spot: 0},
+        //{name:"1st Contact",// mp3 file won't load?
+        //author:"Jimmy",
+        //path:"home",
+        //thumbnail:"https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
+        //id: 7,
+        //spot: 2},
+        {name:"Against All Odds",
+        author:"Jimmy",
+        path:"home",
+        thumbnail:"https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
+        id: 3,
+        spot: 1},
+        {name:"Follow the River",
+        author:"Jimmy",
+        path:"home",
+        thumbnail:"https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
+        id: 4,
+        spot: 2},
+        {name:"Enthusiast",
+        author:"Jimmy",
+        path:"home",
+        thumbnail:"https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
+        id: 1,
+        spot: 3}],
+    thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track"// Doesn't show up anywhere yet
+}
+
+const title = document.getElementById("playlistTitle")
+const container = document.getElementById("songList")
+
+
+
+function CreateStrips() {
+    currentPlaylist.songs.forEach(element => {
+        const songStrip = `
+            <button class="badge play-button" id="playButton" onclick="PlaylistPlayButton(${element.id}, ${element.spot})">Play</button>    
+            <button class="badge queue-button" id="queueButton" onclick="addToQueue(${element.id})">+</button>
+            <img src="${element.thumbnail}" class="strip-Image">
+            <p class="strip-title" id="songTitle">${element.name}</p>
+            <p class="strip-info" id="songInfo">${element.author}</p>
+            `;
+
+            container.innerHTML += songStrip;
+        
+    });
+
+}
+
+function UpdateInformation () {
+    title.textContent = currentPlaylist.name;
+    console.log(currentPlaylist.name)
+    console.log(title.textContent)
+
+}
+
+
+function ContentLoaded () {
+    UpdateInformation();
+    CreateStrips();
+    console.log("info")
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {ContentLoaded()}, false);
+
+function PlaylistPlayButton(song_id, place_in_playlist) {
+
+    while (queue_list.length != 0) {
+        //console.log(queue_list.length)
+        queue_list.pop();
+        //console.log("Just popped that")
+    }
+    addToQueue(song_id)
+    for (i = place_in_playlist + 1; i < currentPlaylist.songs.length; ++i) {
+        
+        addToQueue(currentPlaylist.songs[i].id);
+        //console.log(currentPlaylist.songs[i].spot);
+    }
+    for (i = 0; i < place_in_playlist; ++i) {
+        addToQueue(currentPlaylist.songs[i].id);
+        //console.log(currentPlaylist.songs[i].spot);
+    }
+    queue_index = 0;
+}
+
+// Everything below here is carbon-copy of script.js, I just needed lower bar functionality
+
 let now_playing = document.querySelector(".now-playing");
 let track_art = document.querySelector(".track-art");
 let track_name = document.querySelector(".track-name");
@@ -38,7 +143,7 @@ function addToQueue(addedID) {
     }
     queue_list.push(addedID);
     if (queue_list.length > 3) {
-        console.log(queue_list[queue_list.length - 1]);
+        //console.log(queue_list[queue_list.length - 1]);
     }
 }
 
@@ -264,48 +369,3 @@ function unLoopTrack() {
     // Replace icon with the unLoop icon
     loopBtn.innerHTML = '<i class="fa fa-repeat fa-2x"></i>';
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Select all the cards and their elements
-    let cards = document.querySelectorAll(".card");
-    let container = document.querySelector(".card-container")
-    console.log(container);
-    let songID = 0;
-
-    // Loop through each card
-    /*cards.forEach((card, index) => {
-        // Set the initial track details for each card
-        let currentTrack = track_list[index];
-        updateCard(card, currentTrack);
-        console.log(card.name);
-
-    });*/
-
-    track_list.forEach(song => {
-        const songCard = `                    
-        <div class="card" id="playCard1">
-            <img src="${song.image}" class="card-img">
-            <p class="card-title" id="songTitle">${song.name}</p>
-            <p class="card-info" id="songInfo">Artist: ${song.artist}</p>
-            <button class="badge play-button" id="playButton">Play</button>
-            <button class="badge queue-button" id="queueButton" onclick="addToQueue(${songID})">+</button>
-        </div>`
-        //console.log(songID)
-        songID += 1;
-        container.innerHTML += songCard;
-    });
-
-    // Function to update the card content
-    function updateCard(card, track) {
-        let cardImg = card.querySelector(".card-img");
-        let songTitle = card.querySelector(".card-title");
-        let songInfo = card.querySelector(".card-info");
-
-        cardImg.src = track.image;
-        songTitle.textContent = track.name;
-        songInfo.textContent = `Artist: ${track.artist}`;
-    }
-});
-
-// Load the first track in the tracklist
-//loadTrack(track_index);
