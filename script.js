@@ -15,13 +15,33 @@ let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
  
 // Specify globally used values
-let track_index = 0;
+//let track_index = 0;
 let isPlaying = false;
 let isLooping = false;
 let updateTimer;
 
 let curr_track = document.createElement('audio');
 
+
+// Some variables that Trevor was playing around with. We will hopefully be able to implement this better at a later date. I don't know Javascript!
+let queue_index = 0;
+/*
+let atHomepage = true;
+
+function switchPage() {
+    atHomepage = ! atHomepage;
+}
+*/  
+function addToQueue(addedID) {
+    // Adds a song to the queue when the + button is clicked. If the queue is currently empty, starts playing the music.
+    if (queue_list.length == 0) {
+        loadTrack(addedID);
+    }
+    queue_list.push(addedID);
+    if (queue_list.length > 3) {
+        console.log(queue_list[queue_list.length - 1]);
+    }
+}
 // Define the tracks that have to be played
 let track_list = [
     {
@@ -72,19 +92,14 @@ let track_list = [
         image: "https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
         path: "Assets/Audio/1st Contact - Der Weg.mp3"
     },
-    {
-        name: "Night Owl",
-        artist: "Broke For Free",
-        image: "https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-        path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3"
-    },
+
 ];
 
 function loadTrack(track_index) {
     /* This function is very confusing as I found it on GeeksForGeeks. It appears to load a track when the URL to the webpage is opened and has no call in the HTML file however if its not broken don't fix it. */
 
     // Clear the previous seek timer
-    clearInterval(updateTimer);
+    clearInterval(song_id);
     resetValues();
     
     // Load a new track
@@ -120,7 +135,7 @@ function playpauseTrack() {
     else pauseTrack();
 }
 
-function playTrack() {
+function playTrack() {// If the queue is empty
     // Play the loaded track
     curr_track.play();
     isPlaying = true;
@@ -246,6 +261,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let container = document.querySelector(".card-container")
     console.log(container);
 
+    let songID = 0;
+
+
     // Loop through each card
     /*cards.forEach((card, index) => {
         // Set the initial track details for each card
@@ -262,7 +280,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <p class="card-title" id="songTitle">${song.name}</p>
             <p class="card-info" id="songInfo">Artist: ${song.artist}</p>
             <button class="badge play-button" id="playButton">Play</button>
+
+            <button class="badge queue-button" id="queueButton" onclick="addToQueue(${songID})">+</button>
         </div>`
+        //console.log(songID)
+        songID += 1;
 
         container.innerHTML += songCard;
     });
@@ -280,4 +302,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Load the first track in the tracklist
-loadTrack(track_index);
+
+//loadTrack(track_index);
+
