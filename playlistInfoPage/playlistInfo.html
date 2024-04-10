@@ -6,21 +6,23 @@
     <title>Beat Boulevard</title>
 
     <!-- ICONS -->
-    <link rel="icon" href="./Assets/Photos/musicfavicon.png" />
+    <link rel="icon" href="../Assets/Photos/musicfavicon.png" />
 
     <!-- STYLE SHEETS -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="Assets/styles/color.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../Assets/styles/color.css">
+    <link rel="stylesheet" href="../Assets/styles/playlist.css">
 
     <!-- FONT AWESOME ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- SCRIPTS -->
-    <script src="Assets/scripts/library.js" defer></script>
-    <script src="Assets/scripts/playlist.js" defer></script>
-    <script src="Assets/scripts/color.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="../Assets/scripts/library.js" defer></script>
+    <script src="../Assets/scripts/playlist.js" defer></script>
+    <script src="../Assets/scripts/color.js" defer></script>
+    <script src="../Assets/scripts/playlistInfoPage.js" defer></script>
+
 </head>
 <body id="complex-gradient-transition">
     <!-- HOME AND SEARCH SECTIONS (LEFT SIDE OF WEBPAGE) -->
@@ -30,7 +32,7 @@
                 <div class="nav-option" id="home-link" style="opacity: 1;">
                     <!-- anywhere you see fa- is used for font awesome icons -->
                     <i class="fa-solid fa-house"></i>
-                    <a href="#">Home</a>
+                    <a href="../index.html">Home</a>
                 </div>
                 <div class="nav-option" id="search-link">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -41,7 +43,7 @@
             <div class="library">
                 <div class="options">
                     <div class="lib-option nav-option" id="library-link">
-                    <img src="./Assets/Photos/library_icon.png" alt="lib">
+                    <img src="../Assets/Photos/library_icon.png" alt="lib">
                     <a href="#">Your Library</a>
                     </div>
                     <div class="icons">
@@ -59,7 +61,7 @@
                             <div id="topPlaylist">
                                 <p class="box-p1" id="playlistName">playlistArray[0].name</p>
                                 <p class="box-p2" id="songTitle">playlistArray[0].songs[0].title</p>
-                                <button class="badge" id="addSong"><a class="dynamicLink" href>Add</a></button>
+                                <button class="badge" id="addSong"><a id="dynamicLink">Add</a></button>
                             </div>
                         </div>
                         <div class="box">
@@ -74,65 +76,18 @@
         <div class="main-content">
             <div class="sticky-nav">
                 <div class="sticky-nav-icons">
-                    <img src="./Assets/Photos/backward_icon.png" alt="">
-                    <img src="./Assets/Photos/forward_icon.png" alt="" class="hide">
+                    <img src="../Assets/Photos/backward_icon.png" alt="">
+                    <img src="../Assets/Photos/forward_icon.png" alt="" class="hide">
                 </div>
                 <div class="sticky-nav-options">
-                    <button class="badge nav-item hide" id="signUp-link"><a href="./Login/index.html">Sign Up</a></button>
-                    <button class="badge nav-item dark-badge" id="login-link"><i class="fa-regular fa-circle-down" style="margin-right: 5px;"></i><a href="./Login/index.html">Login</a></button>
+                    <button class="badge nav-item hide" id="signUp-link"><a href="../Login/index.html">Sign Up</a></button>
+                    <button class="badge nav-item dark-badge" id="login-link"><i class="fa-regular fa-circle-down" style="margin-right: 5px;"></i><a href="../Login/index.html">Login</a></button>
                 </div>
             </div>
-                <h2>Recently Played</h2>
-                <div class="card-container">
-                    <!-- each of these cards are their own item sadly, I am working to get these fixed -->
-                    <!--<div class="card" id="playCard1">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard2">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard3">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard4">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard5">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard6">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard7">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard8">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>-->
+            <div>
+            <h2 id="playlistTitle">Recently Played</h2>
+                <div id="songList">
+                    
                 </div>
                 <div class="footer">
                     <div class="line"></div>
@@ -193,4 +148,4 @@
         </div>
     </div>
 </body>
-</html>
+</html
