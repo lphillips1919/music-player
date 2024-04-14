@@ -4,24 +4,24 @@ const indexValue = new URLSearchParams(window.location.search)
 const currentPlaylist = {
     name: "Default Playlist", 
     songs:[
-        //{name:"Cover Girl",// mp3 file wont load?
-        //author:"Jimmy",
-        //path:"home",// What is path?
-        //thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
-        //id: 6,
-        //spot: 0},
+        {name:"Cover Girl",// mp3 file wont load?
+        author:"Jimmy",
+        path:"home",// What is path?
+        thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
+        id: 6,
+        spot: 0},
         {name:"Shipping Lanes",
         author:"Jimmy",
         path:"home",
         thumbnail:"https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
         id: 2,
         spot: 0},
-        //{name:"1st Contact",// mp3 file won't load?
-        //author:"Jimmy",
-        //path:"home",
-        //thumbnail:"https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
-        //id: 7,
-        //spot: 2},
+        {name:"1st Contact",// mp3 file won't load?
+        author:"Jimmy",
+        path:"Assets/Audio/1st Contact - Der Weg.mp3",
+        thumbnail:"https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
+        id: 7,
+        spot: 2},
         {name:"Against All Odds",
         author:"Jimmy",
         path:"home",
@@ -40,28 +40,40 @@ const currentPlaylist = {
         thumbnail:"https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
         id: 1,
         spot: 3}],
-    thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track"// Doesn't show up anywhere yet
+        thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track"// Doesn't show up anywhere yet
 }
 
 const title = document.getElementById("playlistTitle")
 const container = document.getElementById("songList")
 
 
-
+// Modified this function to display a list of the default playlists. Needs to be merged with trevors queue
 function CreateStrips() {
     currentPlaylist.songs.forEach(element => {
-        const songStrip = `
-            <button class="badge play-button" id="playButton" onclick="PlaylistPlayButton(${element.id}, ${element.spot})">Play</button>    
-            <button class="badge queue-button" id="queueButton" onclick="addToQueue(${element.id})">+</button>
-            <img src="${element.thumbnail}" class="strip-Image">
-            <p class="strip-title" id="songTitle">${element.name}</p>
-            <p class="strip-info" id="songInfo">${element.author}</p>
-            `;
-
-            container.innerHTML += songStrip;
+        const songItem = document.createElement('div');
+        songItem.classList.add('song-item');
         
-    });
+        songItem.innerHTML = `
+            <img src="${element.thumbnail}" class="song-thumbnail">
+            <div>
+                <p class="song-title">${element.name}</p>
+                <p class="song-artist">${element.author}</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-plus" onclick="addToQueueAndPlay(${element.id}, ${element.spot})"></i>
+                <i class="fa fa-play"></i>
+                <i class="fa fa-heart"></i>
+                <i class="fa fa-star"></i>
+            </div>
+        `;
 
+        container.appendChild(songItem);
+    });
+}
+
+// needs to be merged with Trevors queue 
+function addToQueueAndPlay(song_id, spot_in_playlist) {
+    PlaylistPlayButton(song_id, spot_in_playlist);
 }
 
 function UpdateInformation () {
@@ -70,7 +82,6 @@ function UpdateInformation () {
     console.log(title.textContent)
 
 }
-
 
 function ContentLoaded () {
     UpdateInformation();
