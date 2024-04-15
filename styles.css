@@ -23,7 +23,7 @@ body{
 
 .nav{
     background-color: #121212;
-    height: 100px;
+    height: 170px;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -217,6 +217,7 @@ ul {
 #library-link a:visited,
 #home-link a:visited,
 #search-link a:visited,
+#upload-link a:visited,
 #login-link a:visited {
     color: white;
 }
@@ -224,6 +225,7 @@ ul {
 #library-link a,
 #home-link a,
 #search-link a,
+#upload-link a,
 #login-link a {
     color: white;
 }
