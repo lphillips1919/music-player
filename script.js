@@ -60,7 +60,7 @@ let track_list = [
         name: "Shipping Lanes",
         artist: "Chad Crouch",
         image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-        path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
+        path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3"
     },
     {
         name: "Against all odds",
@@ -91,7 +91,7 @@ let track_list = [
         artist: "Der Weg",
         image: "https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
         path: "Assets/Audio/1st Contact - Der Weg.mp3"
-    },
+    }
 
 ];
 
