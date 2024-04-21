@@ -32,10 +32,6 @@
                     <i class="fa-solid fa-house"></i>
                     <a href="#">Home</a>
                 </div>
-                <div class="nav-option" id="search-link">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <a href="#">Search</a>
-                </div>
                 <div class="nav-option" id="upload-link">
                     <i class="fa-solid fa-arrow-up-from-bracket"></i>
                     <a href="#">Upload Music</a>
@@ -46,11 +42,10 @@
                 <div class="options">
                     <div class="lib-option nav-option" id="library-link">
                     <img src="./Assets/Photos/library_icon.png" alt="lib">
-                    <a href="#">Your Library</a>
+                    <a href="./playlistInfoPage/playlistInfo.html">Your Library</a>
                     </div>
                     <div class="icons">
                         <i class="fa-solid fa-plus"></i>
-                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </div>
                     <div class="lib-boxes">
@@ -58,13 +53,6 @@
                             <p class="box-p1">Create your first playlist</p>
                             <p class="box-p2">It's easy we'll help you</p>
                             <button class="badge" id="createPlaylist">Create playlist</button>
-                        </div>
-                        <div class="box" id="Playlists" hidden>
-                            <div id="topPlaylist">
-                                <p class="box-p1" id="playlistName">playlistArray[0].name</p>
-                                <p class="box-p2" id="songTitle">playlistArray[0].songs[0].title</p>
-                                <button class="badge" id="addSong"><a class="dynamicLink" href>Add</a></button>
-                            </div>
                         </div>
                         <div class="box">
                             <p class="box-p1">Find your Favorite podcasts</p>
@@ -77,67 +65,10 @@
     <!-- MAIN CONTENT SECTION (RIGHT SIDE OF WEBPAGE) -->        
         <div class="main-content">
             <div class="sticky-nav">
-                <div class="sticky-nav-icons">
-                    <img src="./Assets/Photos/backward_icon.png" alt="">
-                    <img src="./Assets/Photos/forward_icon.png" alt="" class="hide">
-                </div>
-                <div class="sticky-nav-options">
-                    <button class="badge nav-item hide" id="signUp-link"><a href="./Login/index.html">Sign Up</a></button>
-                    <button class="badge nav-item dark-badge" id="login-link"><i class="fa-regular fa-circle-down" style="margin-right: 5px;"></i><a href="./Login/index.html">Login</a></button>
-                </div>
             </div>
                 <h2>Recently Played</h2>
-                <div class="card-container">
-                    <!-- each of these cards are their own item sadly, I am working to get these fixed -->
-                    <!--<div class="card" id="playCard1">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard2">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard3">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard4">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard5">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard6">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard7">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>
-                    <div class="card" id="playCard8">
-                        <img src="" class="card-img">
-                        <p class="card-title" id="songTitle"></p>
-                        <p class="card-info" id="songInfo"></p>
-                        <button class="badge play-button" id="playButton">Play</button>
-                    </div>-->
-                </div>
+                <!-- Creates cards dynamically in playlistInfoPage.js -->
+                <div class="card-container"></div>
                 <div class="footer">
                     <div class="line"></div>
                 </div>
@@ -151,10 +82,6 @@
                         <div class="track-artist">Track Artist</div>
                     </div>
                     <!-- These buttons are useless at the moment-->  
-                    <div class="album-icons">
-                        <i class="fa-regular fa-heart"></i>  
-                        <i class="fa-solid fa-display"></i>
-                    </div>
                     <div class="player">
                         <div class="player-controls">
                             <!-- !This section is  very important the code will not work without these -->
@@ -182,9 +109,6 @@
                         </div>
                     </div>
                     <div class="controls ">
-                        <i class="fa-regular fa-circle-play control-icon" ></i>
-                        <i class="fa-solid fa-bars control-icon" ></i>
-                        <i class="fa-solid fa-computer control-icon" ></i>
                         <div class="slider_container">
                             <!-- !This section is very important the code will not work without these -->
                             <i class="fa-solid fa-volume-low control-icon"></i>
@@ -197,4 +121,4 @@
         </div>
     </div>
 </body>
-</html>
+</html

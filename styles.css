@@ -23,7 +23,7 @@ body{
 
 .nav{
     background-color: #121212;
-    height: 170px;
+    height: 100px;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -99,7 +99,6 @@ body{
     font-size: 0.85rem;
     opacity: 0.75;
 }
-
 
 .dropbar {
     width: auto;
@@ -199,9 +198,12 @@ ul {
     z-index: 10;
 }
 
-.sticky-nav-icons img{
+.sticky-nav-icons img {
     margin-left: 0.75rem;
-    
+}
+
+.sticky-nav-icons i {
+    margin-left: 0.75rem;
 }
 
 .sticky-nav-options {
@@ -217,16 +219,18 @@ ul {
 #library-link a:visited,
 #home-link a:visited,
 #search-link a:visited,
-#upload-link a:visited,
-#login-link a:visited {
+#login-link a:visited,
+#upload-link a:visited {
+    text-decoration: none;
     color: white;
 }
 
 #library-link a,
 #home-link a,
 #search-link a,
-#upload-link a,
-#login-link a {
+#login-link a
+#upload-link a {
+    text-decoration: none;
     color: white;
 }
 

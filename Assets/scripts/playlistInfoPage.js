@@ -1,51 +1,93 @@
-const indexValue = new URLSearchParams(window.location.search)
-//const currentPlaylist = localStorage.getItem("Playlists")[indexValue]
+/*
+                                ---------- UPDATED FEATURES ----------
+    1.) Changed the currentPlaylist to display the correct data
+    2.) Corrected the path issue within the currentPlaylist (See more below)
+    3.) Removed unnecessary buttons
+    4.) Heart buttons now change color when clicked.
+    5.) Added Trevors Rename button.
 
-const currentPlaylist = {
-    name: "Default Playlist", 
-    songs:[
-        {name:"Cover Girl",// mp3 file wont load?
-        author:"Jimmy",
-        path:"home",// What is path?
-        thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
-        id: 6,
-        spot: 0},
-        {name:"Shipping Lanes",
-        author:"Jimmy",
-        path:"home",
-        thumbnail:"https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-        id: 2,
-        spot: 0},
-        {name:"1st Contact",// mp3 file won't load?
-        author:"Jimmy",
-        path:"Assets/Audio/1st Contact - Der Weg.mp3",
-        thumbnail:"https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
-        id: 7,
-        spot: 2},
-        {name:"Against All Odds",
-        author:"Jimmy",
-        path:"home",
-        thumbnail:"https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
-        id: 3,
-        spot: 1},
-        {name:"Follow the River",
-        author:"Jimmy",
-        path:"home",
-        thumbnail:"https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
-        id: 4,
-        spot: 2},
-        {name:"Enthusiast",
-        author:"Jimmy",
-        path:"home",
-        thumbnail:"https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-        id: 1,
-        spot: 3}],
-        thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track"// Doesn't show up anywhere yet
-}
+    !
+    ********** PATH ISSUE **********
+    !
+    
+    The issue with the paths is that for some reason the current track in the playlistinfoPage.js has to have slashes before the beginning of the path. Ex. /Assets/Audio/~music. This is since this script is in the assets folder. That being said the currentPlaylist can have anything as the path since the function pulls fron the track_list path instead of the currentPlaylist path
+*/
+
+const indexValue = new URLSearchParams(window.location.search)
+
+// Changed this for organizational purposes
+let currentPlaylist = {
+    name: "Default Playlist",
+    songs: [
+        {
+            name: "Night Owl",
+            artist: "Broke For Free",
+            image: "https://images.pexels.com/photos/2264753/pexels-photo-2264753.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
+            path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3",
+            id: 0,
+            spot: 0,
+        },
+        {
+            name: "Enthusiast",
+            artist: "Tours",
+            image: "https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
+            path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3",
+            id: 1,
+            spot: 1,
+        },
+        {
+            name: "Shipping Lanes",
+            artist: "Chad Crouch",
+            image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
+            path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
+            id: 2,
+            spot: 2,
+        },
+        {
+            name: "Against all odds",
+            artist: "Nick Petrov",
+            image: "https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
+            path: "Assets/Audio/againstallodds.mp3",
+            id: 3,
+            spot: 3,
+        },
+        {
+            name: "Follow the River",
+            artist: "Ethereal 88",
+            image: "https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
+            path: "Assets/Audio/ethereal88-follow-the-river.mp3",
+            id: 4,
+            spot: 4,
+        },
+        {
+            name: "Last Potatoe on Fire",
+            artist: "Lobo Loco",
+            image: "https://freemusicarchive.org/image/?file=album_image%2F3EIbW78YhfW3Oq0byETPzQfx6M9suAWIQnSZ0Zzl.jpg&width=290&height=290&type=album",
+            path: "Assets/Audio/Lobo Loco - Last Potatoe on Fire (ID 2088).mp3",
+            id: 5,
+            spot: 5,
+        },
+        {
+            name: "Cover Girl",
+            artist: "Beat Mekanik",
+            image: "https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
+            path: "Assets/Audio/Beat Mekanik - Cover Girl.mp3",
+            id: 6,
+            spot: 6,
+        },
+        {
+            name: "1st Contact",
+            artist: "Der Weg",
+            image: "https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
+            path: "Assets/Audio/1st Contact - Der Weg.mp3",
+            id: 7,
+            spot: 7,
+        },
+    ],
+};
 
 const title = document.getElementById("playlistTitle")
 const container = document.getElementById("songList")
-
 
 // Modified this function to display a list of the default playlists. Needs to be merged with trevors queue
 function CreateStrips() {
@@ -54,16 +96,15 @@ function CreateStrips() {
         songItem.classList.add('song-item');
         
         songItem.innerHTML = `
-            <img src="${element.thumbnail}" class="song-thumbnail">
+            <img src="${element.image}" class="song-image">
             <div>
                 <p class="song-title">${element.name}</p>
-                <p class="song-artist">${element.author}</p>
+                <p class="song-artist">${element.artist}</p>
             </div>
             <div class="icon">
-                <i class="fa fa-plus" onclick="addToQueueAndPlay(${element.id}, ${element.spot})"></i>
-                <i class="fa fa-play"></i>
+                <i class="fa fa-play" onclick="addToQueueAndPlay(${element.id}, ${element.spot})"></i>
+                <i class="fa fa-plus" onclick="addToQueue(${element.id})"></i>
                 <i class="fa fa-heart"></i>
-                <i class="fa fa-star"></i>
             </div>
         `;
 
@@ -80,7 +121,6 @@ function UpdateInformation () {
     title.textContent = currentPlaylist.name;
     console.log(currentPlaylist.name)
     console.log(title.textContent)
-
 }
 
 function ContentLoaded () {
@@ -93,7 +133,6 @@ function ContentLoaded () {
 document.addEventListener("DOMContentLoaded", function () {ContentLoaded()}, false);
 
 function PlaylistPlayButton(song_id, place_in_playlist) {
-
     while (queue_list.length != 0) {
         //console.log(queue_list.length)
         queue_list.pop();
@@ -154,7 +193,7 @@ function addToQueue(addedID) {
     }
     queue_list.push(addedID);
     if (queue_list.length > 3) {
-        //console.log(queue_list[queue_list.length - 1]);
+        console.log(queue_list[queue_list.length - 1]);
     }
 }
 
@@ -194,19 +233,19 @@ let track_list = [
         name: "Last Potatoe on Fire",
         artist: "Lobo Loco",
         image: "https://freemusicarchive.org/image/?file=album_image%2F3EIbW78YhfW3Oq0byETPzQfx6M9suAWIQnSZ0Zzl.jpg&width=290&height=290&type=album",
-        path: "Assets/Audio/Lobo Loco - Last Potatoe on Fire (ID 2088).mp3"
+        path: "/Assets/Audio/Lobo Loco - Last Potatoe on Fire (ID 2088).mp3"
     },
     {
         name: "Cover Girl",
         artist: "Beat Mekanik",
         image: "https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
-        path: "Assets/Audio/Beat Mekanik - Cover Girl.mp3"
+        path: "/Assets/Audio/Beat Mekanik - Cover Girl.mp3"
     },
     {
         name: "1st Contact",
         artist: "Der Weg",
         image: "https://freemusicarchive.org/image/?file=track_image%2FKlHPFWlt96ZeEqH52r0PN41wTrWgvHyN2TWRiwwi.jpg&width=290&height=290&type=track",
-        path: "Assets/Audio/1st Contact - Der Weg.mp3"
+        path: "/Assets/Audio/1st Contact - Der Weg.mp3"
     },
 ];
 
@@ -379,4 +418,35 @@ function unLoopTrack() {
 
     // Replace icon with the unLoop icon
     loopBtn.innerHTML = '<i class="fa fa-repeat fa-2x"></i>';
+}
+
+renameButton.addEventListener(
+    "click",
+    function () {
+        renamePopup.classList.add("show");
+    }
+);
+closePopup.addEventListener(
+    "click",
+    function () {
+        renamePopup.classList.remove(
+            "show"
+        );
+    }
+);
+window.addEventListener(
+    "click",
+    function (event) {
+        if (event.target == renamePopup) {
+            renamePopup.classList.remove(
+                "show"
+            );
+        }
+    }
+);
+
+function RenamePlaylist() {
+    console.log("hey")
+    currentPlaylist.name = document.getElementById("newName").value;
+    UpdateInformation();
 }
