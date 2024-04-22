@@ -66,13 +66,13 @@ let track_list = [
         name: "Against all odds",
         artist: "Nick Petrov",
         image: "https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
-        path: "/Assets/Audio/againstallodds.mp3"
+        path: "Assets/Audio/againstallodds.mp3"
     },
     {
         name: "Follow the River",
         artist: "Ethereal 88",
         image: "https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
-        path: "/Assets/Audio/ethereal88-follow-the-river.mp3"
+        path: "Assets/Audio/ethereal88-follow-the-river.mp3"
     },
     {
         name: "Last Potatoe on Fire",

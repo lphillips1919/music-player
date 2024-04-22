@@ -1,0 +1,118 @@
+/* 
+ -----------------
+ Dropdown Styles from https://codepen.io/sinfullycoded/pen/MWLRgPj
+ -----------------
+*/
+.dropdown-container {
+    display: inline-block;
+    padding: 10px;
+}
+
+.dropdown-container .dropdown {
+position: relative;
+}
+
+.dropdown-container .dropdown[open] summary {
+background: #ffffff10;
+}
+
+.dropdown-container .dropdown summary {
+list-style: none;
+display: inline-block;
+cursor: pointer;
+border-radius: 6px;
+}
+
+.dropdown-container .dropdown summary.avatar {
+border-radius: 50px;
+}
+
+.dropdown-container .dropdown summary.avatar img {
+width: 40px;
+height: 40px;
+border-radius: 50px;
+display: inline-block;
+margin: 0;
+}
+
+.dropdown-container .dropdown.right ul {
+right: 0;
+}
+
+.dropdown-container .dropdown ul {
+padding: 0;
+margin: 0;
+box-shadow: 0 0 10px #00000030;
+min-width: max-content;
+position: absolute;
+top: 100%;
+border-radius: 10px;
+background-color: #232323;
+z-index: 2;
+}
+
+.dropdown-container .dropdown ul li {
+list-style-type: none;
+display: block;
+}
+
+.dropdown-container .dropdown ul li:first-of-type {
+border: none;
+background-color: #000000;
+}
+
+.dropdown-container .dropdown ul li p {
+padding: 10px 15px;
+margin: 0;
+}
+
+.dropdown-container .dropdown ul li a {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+padding: 10px 15px;
+text-decoration: none;
+line-height: 1;
+color: #ffffff;
+opacity: 0.6;
+}
+
+.dropdown-container .dropdown ul li a:hover {
+opacity: 1.0;
+}
+
+.dropdown-container .dropdown ul li:first-of-type {
+border-radius: 10px 10px 0 0;
+}
+
+.dropdown-container .dropdown ul li:last-of-type {
+border-radius: 0 0 10px 10px;
+}
+
+.dropdown-container .dropdown ul li a span {
+  padding: 0.25rem 0.75rem 0.25rem 0rem;
+}
+
+.dropdown-container .dropdown ul li.divider {
+border: none;
+border-bottom: 1px solid #ffffff;
+opacity: 0.6;
+/* 
+ * removes border from Li after the divider element
+ * best used in combination with top borders on other LIs 
+ */
+}
+
+.dropdown-container .dropdown ul li.divider ~ li {
+border: none;
+}
+
+.dropdown-user-full-name {
+  display: block;
+  font-weight: bold;
+}
+
+.dropdown-user-email {
+  display: block;
+  font-style: italic;
+}
