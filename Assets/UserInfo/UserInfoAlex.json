@@ -1,0 +1,14 @@
+
+{
+        "username": "alex",
+        "password": "alex5678",
+        "PlaylistList": [
+                {
+                        "Recently Played": [null]
+                },
+
+                {
+                        "Liked Songs": [null]
+                }
+        ]
+}

@@ -257,22 +257,12 @@ function unLoopTrack() {
 
 document.addEventListener("DOMContentLoaded", function () {
     // Select all the cards and their elements
-    let cards = document.querySelectorAll(".card");
-    let container = document.querySelector(".card-container")
-    console.log(container);
+    let cardContainer = document.querySelector(".card-container")
+    let boxContainer = document.querySelector(".lib-boxes")
 
     let songID = 0;
 
-
-    // Loop through each card
-    /*cards.forEach((card, index) => {
-        // Set the initial track details for each card
-        let currentTrack = track_list[index];
-        updateCard(card, currentTrack);
-        console.log(card.name);
-
-    });*/
-
+    // Dynamically adds cards to Recently Played
     track_list.forEach(song => {
         const songCard = `                    
         <div class="card" id="playCard1">
@@ -283,22 +273,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <button class="badge queue-button" id="queueButton" onclick="addToQueue(${songID})">+</button>
         </div>`
-        //console.log(songID)
         songID += 1;
 
-        container.innerHTML += songCard;
+        cardContainer.innerHTML += songCard;
     });
 
-    // Function to update the card content
-    function updateCard(card, track) {
-        let cardImg = card.querySelector(".card-img");
-        let songTitle = card.querySelector(".card-title");
-        let songInfo = card.querySelector(".card-info");
+    // Default Playlist List Array
+    // Will be replaced by playlist list in user infor
+    let defaultList = [0, 0, 0];
 
-        cardImg.src = track.image;
-        songTitle.textContent = track.name;
-        songInfo.textContent = `Artist: ${track.artist}`;
-    }
+    // The id for the box and possibly the button will be held by the playlist itself
+    defaultList.forEach(playlist => {
+        const playlistBox = `
+        <div class="box" id="NoPlaylist">
+        <p class="box-p1">Create your first playlist</p>
+        <p class="box-p2">It's easy we'll help you</p>
+        <button class="badge" id="createPlaylist">Create playlist</button>
+        </div>`
+
+        boxContainer.innerHTML += playlistBox;
+    })
+
 });
 
 // Load the first track in the tracklist
