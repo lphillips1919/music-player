@@ -1,0 +1,15 @@
+
+{
+        "username": "logan",
+        "password": "logan1234",
+        "PlaylistList": [
+                {
+                        "Recently Played": []
+                },
+
+                {
+                        "Liked Songs": []
+                }
+        ]
+}
+
