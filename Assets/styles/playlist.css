@@ -10,7 +10,7 @@
     border-bottom: 1px solid #ccc;
 }
 
-.song-thumbnail {
+.song-image {
     width: 50px; /* Adjust as needed */
     height: 50px; /* Adjust as needed */
     margin-right: 10px;
@@ -36,15 +36,6 @@
     height: 20px; /* Adjust as needed */
     margin-left: 5px;
 }
-
-
-
-
-
-
-
-
-
 
 .popup {
     position: fixed;
