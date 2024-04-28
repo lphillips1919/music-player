@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- SCRIPTS -->
-    <script src="../Assets/scripts/library.js" defer></script>
     <script src="../Assets/scripts/playlist.js" defer></script>
     <script src="../Assets/scripts/color.js" defer></script>
     <script src="../Assets/scripts/playlistInfoPage.js" defer></script>
@@ -27,48 +26,7 @@
 
 </head>
 <body id="complex-gradient-transition">
-    <!-- HOME AND SEARCH SECTIONS (LEFT SIDE OF WEBPAGE) -->
     <div class="main">
-        <div class="sidebar">
-            <div class="nav">
-                <div class="nav-option" id="home-link" style="opacity: 1;">
-                    <!-- anywhere you see fa- is used for font awesome icons -->
-                    <i class="fa-solid fa-house"></i>
-                    <a href="../index.html">Home</a>
-                </div>
-                <div class="nav-option" id="search-link">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <a href="#">Search</a>
-                </div>
-            </div>
-    <!-- LIBRARY SECTION -->
-            <div class="library">
-                <div class="options">
-                    <div class="lib-option nav-option" id="library-link">
-                    <img src="../Assets/Photos/library_icon.png" alt="lib">
-                    <a href="#">Your Library</a>
-                    </div>
-                    <div class="icons">
-                        <i class="fa-solid fa-plus"></i>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
-                    <div class="lib-boxes">
-                        <div class="box" id="NoPlaylist">
-                            <p class="box-p1">Create your first playlist</p>
-                            <p class="box-p2">It's easy we'll help you</p>
-                            <button class="badge" id="createPlaylist">Create playlist</button>
-                        </div>
-                        <div class="box" id="Playlists" hidden>
-                            <div id="topPlaylist">
-                                <p class="box-p1" id="playlistName">playlistArray[0].name</p>
-                                <p class="box-p2" id="songTitle">playlistArray[0].songs[0].title</p>
-                                <button class="badge" id="addSong"><a id="dynamicLink">Add</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
     <!-- MAIN CONTENT SECTION (RIGHT SIDE OF WEBPAGE) -->        
         <div class="main-content">
             <div class="sticky-nav">
@@ -97,14 +55,15 @@
                                 </a>
 			    			</li>
 			    			<li>
-			    				<a href="#">
+			    				<a href="Settings/settings.html">
                                     <span class="fa-solid fa-gear"></span> Settings
                                 </a>
 			    			</li>
-			    			<!-- Optional divider -->
+                            
 			    			<li class="divider"></li>
+
 			    			<li>
-			    				<a href="#">
+			    				<a href="Login/index.html">
                                     <span class="fa-solid fa-right-from-bracket"></span> Logout
                                 </a>
 			    			</li>
@@ -112,9 +71,34 @@
 			    	</details>
 			    </div>
 			    <!-- END: Dropdown Container -->
+                <div class="sticky-nav-options">
+                    <button class="badge nav-item dark-badge" id="login-link"><a href="../index.html"><i class="fa fa-arrow-left"></i></a></button>
+                    <button class="badge nav-item dark-badge" id="renameButton"><i class="fa fa-edit"></i></button>
+                <div id="renamePopup" class="popup">
+                    <div class="popup-content">
+                        <input id="newName" type="text" maxLength="63" autofocus placeholder="Rename Playlist">
+                        <button id="saveName" onclick="RenamePlaylist()">Save</button>
+                        <button id="closePopup">Close</button>
+                    </div>
+                </div>
+                </div>
             </div>
             <div>
             <h2 id="playlistTitle">Recently Played</h2>
+            <button id="renameButton">Rename</button>
+                <div id="renamePopup" class="popup">
+                    <div class="popup-content">
+                        <input id="newName" type="text" maxLength="63" autofocus placeholder="Rename Playlist">
+                        <button id="saveName" onclick="RenamePlaylist()">Save</button>
+                        <button id="closePopup">Close</button>
+                    </div>
+                </div>
+                <!-- <div class="popup" onclick="myFunction()">Click me!
+                    <span class="popuptext" id="myPopup">Popup text...
+                        
+                    </span>
+                </div> 
+                <button class="badge rename-button" id="renameButton">Rename</button> -->
                 <div id="songList">
                     
                 </div>
@@ -131,10 +115,6 @@
                         <div class="track-artist">Track Artist</div>
                     </div>
                     <!-- These buttons are useless at the moment-->  
-                    <div class="album-icons">
-                        <i class="fa-regular fa-heart"></i>  
-                        <i class="fa-solid fa-display"></i>
-                    </div>
                     <div class="player">
                         <div class="player-controls">
                             <!-- !This section is  very important the code will not work without these -->
@@ -161,10 +141,7 @@
                             <div class="total-duration">00:00</div>
                         </div>
                     </div>
-                    <div class="controls ">
-                        <i class="fa-regular fa-circle-play control-icon" ></i>
-                        <i class="fa-solid fa-bars control-icon" ></i>
-                        <i class="fa-solid fa-computer control-icon" ></i>
+                    <div class="controls">
                         <div class="slider_container">
                             <!-- !This section is very important the code will not work without these -->
                             <i class="fa-solid fa-volume-low control-icon"></i>
