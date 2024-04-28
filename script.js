@@ -257,12 +257,22 @@ function unLoopTrack() {
 
 document.addEventListener("DOMContentLoaded", function () {
     // Select all the cards and their elements
-    let cardContainer = document.querySelector(".card-container")
-    let boxContainer = document.querySelector(".lib-boxes")
+    let cards = document.querySelectorAll(".card");
+    let container = document.querySelector(".card-container")
+    console.log(container);
 
     let songID = 0;
 
-    // Dynamically adds cards to Recently Played
+
+    // Loop through each card
+    /*cards.forEach((card, index) => {
+        // Set the initial track details for each card
+        let currentTrack = track_list[index];
+        updateCard(card, currentTrack);
+        console.log(card.name);
+
+    });*/
+
     track_list.forEach(song => {
         const songCard = `                    
         <div class="card" id="playCard1">
@@ -275,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>`
         songID += 1;
 
-        cardContainer.innerHTML += songCard;
+        container.innerHTML += songCard;
     });
 
     // Default Playlist List Array

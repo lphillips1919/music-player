@@ -6,7 +6,7 @@ const currentPlaylist = {
     songs:[
         {name:"Cover Girl",// mp3 file wont load?
         author:"Jimmy",
-        path:"home",// What is path?
+        path:"home",
         thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track",
         id: 6,
         spot: 0},
@@ -15,7 +15,7 @@ const currentPlaylist = {
         path:"home",
         thumbnail:"https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
         id: 2,
-        spot: 0},
+        spot: 1},
         {name:"1st Contact",// mp3 file won't load?
         author:"Jimmy",
         path:"Assets/Audio/1st Contact - Der Weg.mp3",
@@ -27,19 +27,19 @@ const currentPlaylist = {
         path:"home",
         thumbnail:"https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
         id: 3,
-        spot: 1},
+        spot: 3},
         {name:"Follow the River",
         author:"Jimmy",
         path:"home",
         thumbnail:"https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
         id: 4,
-        spot: 2},
+        spot: 4},
         {name:"Enthusiast",
         author:"Jimmy",
         path:"home",
         thumbnail:"https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
         id: 1,
-        spot: 3}],
+        spot: 5}],
         thumbnail:"https://freemusicarchive.org/image/?file=track_image%2Fgn4SzIXBiH3kOVR1bDrKPshJkkTA9QufEBR6CdiR.jpg&width=290&height=290&type=track"// Doesn't show up anywhere yet
 }
 
@@ -47,6 +47,7 @@ const title = document.getElementById("playlistTitle")
 const container = document.getElementById("songList")
 
 
+// Modified this function to display a list of the default playlists. Needs to be merged with trevors queue
 // Modified this function to display a list of the default playlists. Needs to be merged with trevors queue
 function CreateStrips() {
     currentPlaylist.songs.forEach(element => {
@@ -60,10 +61,9 @@ function CreateStrips() {
                 <p class="song-artist">${element.author}</p>
             </div>
             <div class="icon">
-                <i class="fa fa-plus" onclick="addToQueueAndPlay(${element.id}, ${element.spot})"></i>
-                <i class="fa fa-play"></i>
+                <i class="fa fa-play" onclick="addToQueueAndPlay(${element.id}, ${element.spot})"></i>
+                <i class="fa fa-plus" onclick="addToQueue(${element.id})"></i>
                 <i class="fa fa-heart"></i>
-                <i class="fa fa-star"></i>
             </div>
         `;
 
@@ -182,13 +182,13 @@ let track_list = [
         name: "Against all odds",
         artist: "Nick Petrov",
         image: "https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
-        path: "/Assets/Audio/againstallodds.mp3"
+        path: "Assets/Audio/againstallodds.mp3"
     },
     {
         name: "Follow the River",
         artist: "Ethereal 88",
         image: "https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
-        path: "/Assets/Audio/ethereal88-follow-the-river.mp3"
+        path: "Assets/Audio/ethereal88-follow-the-river.mp3"
     },
     {
         name: "Last Potatoe on Fire",
@@ -379,4 +379,35 @@ function unLoopTrack() {
 
     // Replace icon with the unLoop icon
     loopBtn.innerHTML = '<i class="fa fa-repeat fa-2x"></i>';
+}
+
+renameButton.addEventListener(
+    "click",
+    function () {
+        renamePopup.classList.add("show");
+    }
+);
+closePopup.addEventListener(
+    "click",
+    function () {
+        renamePopup.classList.remove(
+            "show"
+        );
+    }
+);
+window.addEventListener(
+    "click",
+    function (event) {
+        if (event.target == renamePopup) {
+            renamePopup.classList.remove(
+                "show"
+            );
+        }
+    }
+);
+
+function RenamePlaylist() {
+    console.log("hey")
+    currentPlaylist.name = document.getElementById("newName").value;
+    UpdateInformation();
 }
