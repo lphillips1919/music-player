@@ -70,7 +70,7 @@ function LoginDataCheck(loginForm, username, password) {
     FetchUserData("../../Assets/UserInfo/UserInfoJon.json", username, password, loginForm)
     FetchUserData("../../Assets/UserInfo/UserInfoLogan.json", username, password, loginForm)
     FetchUserData("../../Assets/UserInfo/UserInfoTrevor.json", username, password, loginForm)
-    FetchUserData("../../Assets/UserInfo/UserInfoAlycin.json", username, password, loginForm)
+    FetchUserData("../../Assets/UserInfo/UserInfoAlicyn.json", username, password, loginForm)
     
     setFormMessage(loginForm, "error", "Invalid username/password combination");
 }
