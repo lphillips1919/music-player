@@ -11,6 +11,7 @@
     <!-- STYLE SHEETS -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="Assets/styles/color.css">
+    <link rel="stylesheet" href="Assets/styles/profile-dropdown.css">
 
     <!-- FONT AWESOME ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -21,6 +22,7 @@
     <script src="Assets/scripts/playlist.js" defer></script>
     <script src="Assets/scripts/color.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="Assets/scripts/profileDropdown.js" defer></script>
 </head>
 <body id="complex-gradient-transition">
     <!-- HOME AND SEARCH SECTIONS (LEFT SIDE OF WEBPAGE) -->
@@ -35,10 +37,6 @@
                 <div class="nav-option" id="search-link">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <a href="#">Search</a>
-                </div>
-                <div class="nav-option" id="upload-link">
-                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                    <a href="#">Upload Music</a>
                 </div>
             </div>
     <!-- LIBRARY SECTION -->
@@ -82,10 +80,42 @@
                     <img src="./Assets/Photos/backward_icon.png" alt="">
                     <img src="./Assets/Photos/forward_icon.png" alt="" class="hide">
                 </div>
-                <div class="sticky-nav-options">
-                    <button class="badge nav-item hide" id="signUp-link"><a href="./Login/index.html">Sign Up</a></button>
-                    <button class="badge nav-item dark-badge" id="login-link"><i class="fa-regular fa-circle-down" style="margin-right: 5px;"></i><a href="./Login/index.html">Login</a></button>
-                </div>
+                <!-- START: Dropdown Container avatar version from https://codepen.io/sinfullycoded/pen/MWLRgPj -->
+			    <div class="dropdown-container">
+			    	<details class="dropdown right">
+			    		<summary class="avatar">
+			    			<img src="https://gravatar.com/avatar/00000000000000000000000000000000?d=mp">
+			    		</summary>
+			    		<ul>
+			    			<!-- Optional: user details area w/ gray bg -->
+			    			<li>
+			    				<p>
+			    					<span class="dropdown-user-full-name">Jane Doe</span>
+			    					<span class="dropdown-user-email">jane@example.com</span>
+			    				</p>
+			    			</li>
+			    			<!-- Menu links -->
+			    			<li>
+			    				<a href="#">
+                                    <span class="fa-solid fa-user"></span> Profile
+                                </a>
+			    			</li>
+			    			<li>
+			    				<a href="#">
+                                    <span class="fa-solid fa-gear"></span> Settings
+                                </a>
+			    			</li>
+			    			<!-- Optional divider -->
+			    			<li class="divider"></li>
+			    			<li>
+			    				<a href="#">
+                                    <span class="fa-solid fa-right-from-bracket"></span> Logout
+                                </a>
+			    			</li>
+			    		</ul>
+			    	</details>
+			    </div>
+			    <!-- END: Dropdown Container -->
             </div>
                 <h2>Recently Played</h2>
                 <div class="card-container">

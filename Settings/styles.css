@@ -47,6 +47,7 @@ body{
 .nav-option a {
     font-size: 1rem;
     margin-left: 1rem;
+    text-decoration: none;  /* Removes link underlines */
 }
 
 .library {
@@ -55,11 +56,6 @@ body{
     height: 100%;
     margin-top: 0.5rem;
     padding: 0.5rem 0.75rem;
-    overflow-y: auto;
-}
-
-.library::-webkit-scrollbar {
-    display: none;
 }
 
 .options{
@@ -500,4 +496,3 @@ i.fa-repeat {
 .loop-track:hover {
     opacity: 1.0;
 }
-
