@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="badge" id="createPlaylist">Create playlist</button>
         </div>`
 
-        boxContainer.innerHTML += playlistBox;
+        container.innerHTML += playlistBox;
     })
 
 });
