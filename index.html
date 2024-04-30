@@ -11,16 +11,17 @@
     <!-- STYLE SHEETS -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="Assets/styles/color.css">
+    <link rel="stylesheet" href="Assets/styles/profile-dropdown.css">
 
     <!-- FONT AWESOME ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- SCRIPTS -->
-    <script src="Assets/scripts/library.js" defer></script>
     <script src="Assets/scripts/playlist.js" defer></script>
     <script src="Assets/scripts/color.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="Assets/scripts/profileDropdown.js" defer></script>
 </head>
 <body id="complex-gradient-transition">
     <!-- HOME AND SEARCH SECTIONS (LEFT SIDE OF WEBPAGE) -->
@@ -32,9 +33,9 @@
                     <i class="fa-solid fa-house"></i>
                     <a href="#">Home</a>
                 </div>
-                <div class="nav-option" id="upload-link">
-                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                    <a href="#">Upload Music</a>
+                <div class="nav-option" id="search-link">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="#">Search</a>
                 </div>
             </div>
     <!-- LIBRARY SECTION -->
@@ -49,6 +50,7 @@
                     </div>
                 </div>
                     <div class="lib-boxes">
+                        <!--
                         <div class="box" id="NoPlaylist">
                             <p class="box-p1">Create your first playlist</p>
                             <p class="box-p2">It's easy we'll help you</p>
@@ -58,13 +60,54 @@
                             <p class="box-p1">Find your Favorite podcasts</p>
                             <p class="box-p2">Discover new episodes</p>
                             <button class="badge">Discover Podcasts</button>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
     <!-- MAIN CONTENT SECTION (RIGHT SIDE OF WEBPAGE) -->        
         <div class="main-content">
             <div class="sticky-nav">
+                <div class="sticky-nav-icons">
+                    <img src="./Assets/Photos/backward_icon.png" alt="">
+                    <img src="./Assets/Photos/forward_icon.png" alt="" class="hide">
+                </div>
+                <!-- START: Dropdown Container avatar version from https://codepen.io/sinfullycoded/pen/MWLRgPj -->
+			    <div class="dropdown-container">
+			    	<details class="dropdown right">
+			    		<summary class="avatar">
+			    			<img src="https://gravatar.com/avatar/00000000000000000000000000000000?d=mp">
+			    		</summary>
+			    		<ul>
+			    			<!-- Optional: user details area w/ gray bg -->
+			    			<li>
+			    				<p>
+			    					<span class="dropdown-user-full-name">Jane Doe</span>
+			    					<span class="dropdown-user-email">jane@example.com</span>
+			    				</p>
+			    			</li>
+			    			<!-- Menu links -->
+			    			<li>
+			    				<a href="#">
+                                    <span class="fa-solid fa-user"></span> Profile
+                                </a>
+			    			</li>
+			    			<li>
+			    				<a href="Settings/settings.html">
+                                    <span class="fa-solid fa-gear"></span> Settings
+                                </a>
+			    			</li>
+                            
+			    			<li class="divider"></li>
+
+			    			<li>
+			    				<a href="Login/index.html">
+                                    <span class="fa-solid fa-right-from-bracket"></span> Logout
+                                </a>
+			    			</li>
+			    		</ul>
+			    	</details>
+			    </div>
+			    <!-- END: Dropdown Container -->
             </div>
                 <h2>Recently Played</h2>
                 <!-- Creates cards dynamically in playlistInfoPage.js -->

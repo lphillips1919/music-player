@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#login");
     const createAccountForm = document.querySelector("#createAccount");
 
+
     document.querySelector("#linkCreateAccount").addEventListener("click", e => {
         e.preventDefault();
         loginForm.classList.add("form--hidden");
@@ -34,10 +35,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginForm.addEventListener("submit", e => {
         e.preventDefault();
+        let inputBoxes = document.getElementById("login").getElementsByClassName("form__input");
+        let input = Array.from(inputBoxes)
+        let password;
+        let username;
+        
+        input.forEach((entry) => {
+            if(entry.type == "password") {
+                password = entry.value;
+            } else if(entry.type == "text") {
+                username = entry.value;
+            }
+        })
 
-        // Perform your AJAX/Fetch login
+        LoginDataCheck(loginForm, username, password);
 
-        setFormMessage(loginForm, "error", "Invalid username/password combination");
     });
 
     document.querySelectorAll(".form__input").forEach(inputElement => {
@@ -52,3 +64,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+function LoginDataCheck(loginForm, username, password) {
+    FetchUserData("../../Assets/UserInfo/UserInfoAlex.json", username, password, loginForm)
+    FetchUserData("../../Assets/UserInfo/UserInfoJon.json", username, password, loginForm)
+    FetchUserData("../../Assets/UserInfo/UserInfoLogan.json", username, password, loginForm)
+    FetchUserData("../../Assets/UserInfo/UserInfoTrevor.json", username, password, loginForm)
+    FetchUserData("../../Assets/UserInfo/UserInfoAlicyn.json", username, password, loginForm)
+    
+    setFormMessage(loginForm, "error", "Invalid username/password combination");
+}
+
+async function FetchUserData(url, username, password, loginForm) {
+    const response = await fetch(url);
+    const userData = await response.json();
+
+    if (userData.username == username && userData.password == password) {
+        window.location.replace('../../index.html')
+    }
+}

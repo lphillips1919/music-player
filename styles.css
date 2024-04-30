@@ -47,6 +47,7 @@ body{
 .nav-option a {
     font-size: 1rem;
     margin-left: 1rem;
+    text-decoration: none;  /* Removes link underlines */
 }
 
 .library {
@@ -55,6 +56,11 @@ body{
     height: 100%;
     margin-top: 0.5rem;
     padding: 0.5rem 0.75rem;
+    overflow-y: auto;
+}
+
+.library::-webkit-scrollbar {
+    display: none;
 }
 
 .options{
@@ -219,18 +225,14 @@ ul {
 #library-link a:visited,
 #home-link a:visited,
 #search-link a:visited,
-#login-link a:visited,
-#upload-link a:visited {
-    text-decoration: none;
+#login-link a:visited {
     color: white;
 }
 
 #library-link a,
 #home-link a,
 #search-link a,
-#login-link a
-#upload-link a {
-    text-decoration: none;
+#login-link a {
     color: white;
 }
 
