@@ -1,3 +1,511 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+}
+
+.main{
+    display: flex;
+    height: 100vh;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar{
+    width: 340px;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 10rem;
+}
+
+.nav{
+    background-color: #121212;
+    height: 100px;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.75rem;
+}
+
+.nav-option {
+    line-height: 2.5rem;
+    opacity: 0.6;
+    padding: 0.5rem 0.75rem;
+}
+
+.nav-option:hover {
+    opacity: 1;
+}
+
+.nav-option i {
+    font-size: 1.25rem;
+}
+
+.nav-option a {
+    font-size: 1rem;
+    margin-left: 1rem;
+    text-decoration: none;  /* Removes link underlines */
+}
+
+.library {
+    background-color: #121212;
+    border-radius: 1rem;
+    height: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    overflow-y: auto;
+}
+
+.library::-webkit-scrollbar {
+    display: none;
+}
+
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lib-option img{
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.icons {
+    font-size: 1.25rem;
+    display: flex;
+}
+
+.icons i{
+    opacity: 0.7;
+    margin-right:1rem;
+}
+
+.icons i:hover{
+    opacity: 1;
+}
+
+.box{
+    background-color: #232323;
+    height: 16rem;
+    border-radius: 0.75rem;
+    margin: 0.75rem 0 1.75rem 0;
+    padding: 0.75rem 1rem;
+}
+
+.box-p1 {
+    font-size: 1rem;
+    font-weight: 550;
+}
+
+.box-p2 {
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.dropbar {
+    width: auto;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.list li {
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+}
+
+.list-title {
+    display: flex;
+    gap: 0.5rem;
+    align-items: left;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.list-title .fa-chevron-down {
+    display: flex;
+    margin-left: auto;
+    font-size: 0.75rem;
+}
+
+.list-title:hover,
+.list-title.active,
+.list.inner li:hover {
+  background: #5a5a5a;
+}
+
+.list.inner {
+    height: 0;
+    overflow: hidden;
+    transition: height 200ms ease;
+}
+
+.list.inner li {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    padding-left: 2rem;
+}
+
+.list-title.active .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.badge {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    padding: 0.25rem 1rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: fit-content;
+}
+
+.main-content{
+    background-color: #121212;
+    flex: 1;
+    border-radius: 1rem;
+    overflow: auto;
+    padding: 0 1.5rem 0 1.5rem;
+    margin-bottom: 20px;
+}
+
+.dark-badge {
+    background-color: #000;
+    color: #fff;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    z-index: 10;
+}
+
+.sticky-nav-icons img {
+    margin-left: 0.75rem;
+}
+
+.sticky-nav-icons i {
+    margin-left: 0.75rem;
+}
+
+.sticky-nav-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item{
+    margin-right: 1rem;
+}
+
+#library-link a:visited,
+#home-link a:visited,
+#search-link a:visited,
+#login-link a:visited {
+    color: white;
+}
+
+#library-link a,
+#home-link a,
+#search-link a,
+#login-link a {
+    color: white;
+}
+
+#signUp-link a {
+    color: black;
+}
+
+#signUp-link a:visited {
+    color: black;
+}
+
+@media (max-width:1000px){
+    .hide {
+        display: none;
+    }
+}
+
+.card {
+    background-color: #232323;
+    width: 150px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.card-title{
+    font-size: .9rem;
+    font-weight: 600;
+    overflow: hidden;
+}
+
+.card-info {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.footer{
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This is differnt than the track-art styles since they are currently loaded differently */
+.card-img {
+    margin: 0;
+    height: 150px;
+    width: 150px;
+    /* This is the default background if the album image is not fetched from the Javascript code */
+    background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.line {
+    width: 90%;
+    height: 80%;
+    border-top: 1px solid white;
+    opacity: 0.4;
+}
+
+.music-player{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    position: sticky;
+    top: 90px;
+    bottom: 20px;
+    width: auto;
+    height: auto;
+    overflow: clip;
+}
+
+.controls {
+    width: 25%;
+}
+
+.player-control-icon{
+    height: 1rem;
+    margin-right: 1.75rem;
+    opacity: 0.5;
+}
+
+.player-controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-control-icon:hover {
+    opacity: 1;
+}
+
+.slider_container {
+    display: flex;
+    margin-right: 12px;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.seek_slider, .volume_slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 5px;
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+/* Modify the appearance of the slider thumb */
+.seek_slider::-webkit-slider-thumb,
+.volume_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: rgb(54, 54, 54);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* Change the opacity when mouse is hovered */
+.seek_slider:hover,
+.volume_slider:hover {
+    opacity: 1.0;
+}
+
+.seek_slider {
+    width: 60%;
+}
+
+.volume_slider {
+    width: 30%;
+}
+
+.album {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details {
+    margin-left: 10px;
+    align-items:flex-end;
+    flex-direction: column;
+}
+
+.album-icons i {
+    position: relative;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.controls{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.controls i{
+    margin-left: 1rem;
+}
+
+.slider_container i{
+    margin-left: 0rem;
+}
+
+.progress-bar {
+    width: 30%;
+    margin-left: 0.5rem;
+}
+
+.control-icon {
+    opacity: 0.6;
+   
+}
+
+.control-icon:hover {
+    opacity: 1;
+}
+
+.current-time,
+.total-duration {
+    padding: 0px;
+}
+
+i.fa-volume-down,
+i.fa-volume-up {
+    padding: 0px;
+}
+
+i.fa-play-circle,
+i.fa-pause-circle,
+i.fa-step-forward,
+i.fa-step-backward,
+i.fa-random,
+i.fa-sync,
+i.fa-repeat {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* Changing the font sizes to suitable ones */
+.now-playing {
+    font-size: 1rem;
+}
+
+.track-art {
+    margin-right: 10px;
+    height: 65px;
+    width: 65px;
+    background-image: URL("https://source.unsplash.com/Qrspubmx6kE/640x360");
+    background-size: cover;
+    background-position: center center;
+    border-radius: 8%;
+}
+
+.track-name {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.track-artist {
+    font-size: 1rem;
+    margin-bottom: 0px;
+    overflow: hidden;
+}
+
+.playpause-track,
+.prev-track,
+.next-track,
+.shuffle-track,
+.loop-track {
+    align-items: right;
+    opacity: 0.8;
+
+    /* Smoothly transition the opacity */
+    transition: opacity .2s;
+}
+
+/* Change the opacity when mouse is hovered */
+.playpause-track:hover,
+.prev-track:hover,
+.next-track:hover,
+.shuffle-track:hover,
+.loop-track:hover {
+    opacity: 1.0;
+}
+
+
+
 .song-list {
     list-style-type: none;
     padding: 0;
@@ -68,3 +576,4 @@
 .show {
     display: block;
 }
+

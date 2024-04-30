@@ -105,8 +105,6 @@ function CreateStrips() {
             <div class="icon">
                 <i class="fa fa-play" onclick="addToQueueAndPlay(${element.id}, ${element.spot})"></i>
                 <i class="fa fa-plus" onclick="addToQueue(${element.id})"></i>
-                <i class="fa fa-play" onclick="addToQueueAndPlay(${element.id}, ${element.spot})"></i>
-                <i class="fa fa-plus" onclick="addToQueue(${element.id})"></i>
                 <i class="fa fa-heart"></i>
             </div>
         `;
@@ -224,13 +222,13 @@ let track_list = [
         name: "Against all odds",
         artist: "Nick Petrov",
         image: "https://cdn.bensound.com/image/cover/nickpetrov-pixeldreams.webp",
-        path: "Assets/Audio/againstallodds.mp3"
+        path: "/Assets/Audio/againstallodds.mp3"
     },
     {
         name: "Follow the River",
         artist: "Ethereal 88",
         image: "https://www.free-stock-music.com/thumbnails/ethereal88-follow-the-river.jpg",
-        path: "Assets/Audio/ethereal88-follow-the-river.mp3"
+        path: "/Assets/Audio/ethereal88-follow-the-river.mp3"
     },
     {
         name: "Last Potatoe on Fire",
@@ -421,37 +419,6 @@ function unLoopTrack() {
 
     // Replace icon with the unLoop icon
     loopBtn.innerHTML = '<i class="fa fa-repeat fa-2x"></i>';
-}
-
-renameButton.addEventListener(
-    "click",
-    function () {
-        renamePopup.classList.add("show");
-    }
-);
-closePopup.addEventListener(
-    "click",
-    function () {
-        renamePopup.classList.remove(
-            "show"
-        );
-    }
-);
-window.addEventListener(
-    "click",
-    function (event) {
-        if (event.target == renamePopup) {
-            renamePopup.classList.remove(
-                "show"
-            );
-        }
-    }
-);
-
-function RenamePlaylist() {
-    console.log("hey")
-    currentPlaylist.name = document.getElementById("newName").value;
-    UpdateInformation();
 }
 
 renameButton.addEventListener(

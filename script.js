@@ -298,17 +298,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // Will be replaced by playlist list in user infor
     let defaultList = [0, 0, 0];
 
-    // The id for the box and possibly the button will be held by the playlist itself
-    defaultList.forEach(playlist => {
-        const playlistBox = `
-        <div class="box" id="NoPlaylist">
-        <p class="box-p1">Create your first playlist</p>
-        <p class="box-p2">It's easy we'll help you</p>
-        <button class="badge" id="createPlaylist">Create playlist</button>
-        </div>`
+    // // The id for the box and possibly the button will be held by the playlist itself
+    // defaultList.forEach(playlist => {
+    //     const playlistBox = `
+    //     <div class="box" id="NoPlaylist">
+    //     <p class="box-p1">Create your first playlist</p>
+    //     <p class="box-p2">It's easy we'll help you</p>
+    //     <button class="badge" id="createPlaylist">Create playlist</button>
+    //     </div>`
 
-        container.innerHTML += playlistBox;
-    })
+    //     container.innerHTML += playlistBox;
+    // })
 
 });
 
