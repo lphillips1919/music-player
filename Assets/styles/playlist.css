@@ -312,8 +312,8 @@ ul {
     align-items: center;
     background-color: rgb(0, 0, 0);
     border-radius: 10px;
-    position: sticky;
-    top: 90px;
+    position: relative;
+    top: 120px;
     bottom: 20px;
     width: auto;
     height: auto;
