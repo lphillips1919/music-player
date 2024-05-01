@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <img src="${song.image}" class="card-img">
             <p class="card-title" id="songTitle">${song.name}</p>
             <p class="card-info" id="songInfo">Artist: ${song.artist}</p>
-            <button class="badge play-button" id="playButton">Play</button>
+            <button class="badge play-button" id="playButton" onclick="addToQueueAndPlay(${songID})">Play</button>
             <button class="badge queue-button" id="queueButton" onclick="addToQueue(${songID})">+</button>
         </div>`
         songID += 1;
@@ -314,3 +314,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Load the first track in the tracklist
 //loadTrack(track_index);
+
+// needs to be merged with Trevors queue 
+function addToQueueAndPlay(song_id, spot_in_playlist) {
+    PlaylistPlayButton(song_id, spot_in_playlist);
+}
+
+
+function PlaylistPlayButton(song_id, place_in_playlist) {
+    while (queue_list.length != 0) {
+        //console.log(queue_list.length)
+        queue_list.pop();
+        //console.log("Just popped that")
+    }
+    addToQueue(song_id)
+    for (i = place_in_playlist + 1; i < currentPlaylist.songs.length; ++i) {
+        
+        addToQueue(currentPlaylist.songs[i].id);
+        //console.log(currentPlaylist.songs[i].spot);
+    }
+    for (i = 0; i < place_in_playlist; ++i) {
+        addToQueue(currentPlaylist.songs[i].id);
+        //console.log(currentPlaylist.songs[i].spot);
+    }
+    queue_index = 0;
+}
